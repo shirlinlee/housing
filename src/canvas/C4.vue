@@ -1,10 +1,13 @@
 <template>
   
   <div class="canvas_wrapper">
-    <div :is="el"/>
+    <transition name="canvas">
+      <div :is="el" :key="el"/>
+    </transition>
     <ul>
       <li v-for="(slide,index) in slides" :class="{'active': current === index}" @click="currentHandler(index)">{{ slide }}</li>
     </ul>
+    <a class="arrow" @click="arrowHandler(1)">></a> 
   </div>  
 </template>
 
@@ -44,25 +47,18 @@
           this.el = "c4_"+(index+1);
         }
         
+      },
+      arrowHandler: function(add){
+        var currentPage = Number(this.el.substr(-1, 1));
+        if( this.slides.length > currentPage ) {
+            this.el = 'c4_'+ ( currentPage + add );
+            this.current = this.current+add;
+        } else{
+            this.el = 'c4_1';
+            this.current = 0;
+        }  
       }
       
     }
   }
 </script>
-<style lang="scss" scoped>
-  ul {
-    display:inline-block;
-    margin: 0 auto;
-    li {
-      border: 1px solid #000;
-      padding: 10px 20px;
-      display: inline-block;
-      margin: 0 8px;
-      &.active {
-        color: #fff;
-        background-color: #000;
-      }
-    }
-  }
-  
-</style>

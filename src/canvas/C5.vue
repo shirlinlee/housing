@@ -1,118 +1,64 @@
 <template>
-  <div>
-      <canvas id="canvas5-1"></canvas>
-      
-  </div>
+  
+  <div class="canvas_wrapper">
+    <transition name="canvas">
+      <div :is="el" :key="el"/>
+    </transition>
+    <ul>
+      <li v-for="(slide,index) in slides" :class="{'active': current === index}" @click="currentHandler(index)">{{ slide }}</li>
+    </ul>
+    <a class="arrow" @click="arrowHandler(1)">></a> 
+  </div>  
 </template>
 
 <script>
+  import c5_1 from './C5-1';
+  import c5_2 from './C5-2';
+  
+  
   export default {
     data(){
       return {
-        name:'5-1',
-        slides:['當層排氣'],
-        scriptTag: null,
-        canvas: null,
-        stage: null, 
-        exportRoot: null, 
-        fnStartAnimation: null
+        current:0,
+        slides:['當層排氣','活水系統'],
+        el:'c5_1'
       }
 
     },
+    components: {
+      'c5_1': c5_1,
+      'c5_2': c5_2
+      
+    },
     updated() {
-      //  console.log('5','updated');
     },
     mounted() {
-      // console.log('5');
-      this.scriptTag = document.createElement("script");
-      this.scriptTag.src = `/static/js/${this.name}.js`;
-      this.scriptTag.id = `c${this.name}`;
-      document.getElementsByTagName('head')[0].appendChild(this.scriptTag);
-
-      var $this = this;
+      console.log('5');
       this.$nextTick(function() {
-          setTimeout(function(){
-            $this.init();
-          },200)
       })
 
     },
     destroyed() {
-        document.getElementsByTagName('head')[0].removeChild(this.scriptTag);
     },
     methods: {
-      init:function () {
-          var $this = this;
-          this.canvas = document.getElementById("canvas5-1");
-          var comp=AdobeAn.getComposition("0C5B678E7B09774BB36CFD30BBDF5F52");
-          var lib=comp.getLibrary();
-          var loader = new createjs.LoadQueue(false);
-          loader.addEventListener("fileload", function(evt){ $this.handleFileLoad(evt,comp)});
-          loader.addEventListener("complete", function(evt){ $this.handleComplete(evt,comp)});
-          var lib=comp.getLibrary();
-          loader.loadManifest(lib.properties.manifest);
+      currentHandler:function(index){
+        if( this.current !== index) {
+          this.current = index;
+          this.el = "c5_"+(index+1);
+        }
+        
       },
-      handleFileLoad: function(evt,comp){
-          var images=comp.getImages();	
-          if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
-      },
-      resizeCanvas: function(lib,isResp,lastW, lastH, lastS) {			
-          var w = lib.properties.width, h = lib.properties.height;			
-          var iw = window.innerWidth, ih=window.innerHeight;			
-          var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
-          if(isResp) {                
-            if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
-              sRatio = lastS;                
-            }				
-            else if(!isScale) {					
-              if(iw<w || ih<h)						
-              sRatio = Math.min(xRatio, yRatio);				
-            }				
-            else if(scaleType==1) {					
-              sRatio = Math.min(xRatio, yRatio);				
-            }				
-            else if(scaleType==2) {					
-              sRatio = Math.max(xRatio, yRatio);				
-            }			
-          }			
-          this.canvas.width = w*pRatio*sRatio;			
-          this.canvas.height = h*pRatio*sRatio;
-          this.canvas.style.width = w*sRatio+'px';				
-          this.canvas.style.height = h*sRatio+'px';
-          this.stage.scaleX = pRatio*sRatio;			
-          this.stage.scaleY = pRatio*sRatio;			
-          lastW = iw; lastH = ih; lastS = sRatio;		
-      },
-      makeResponsive: function (isResp, respDim, isScale, scaleType,lib) {		
-          var lastW, lastH, lastS=1;		
-          window.addEventListener('resize', this.resizeCanvas);		
-          this.resizeCanvas(lib,isResp,lastW, lastH, lastS);		
-
-      },
-      handleComplete(evt,comp) {
-        //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-          var lib=comp.getLibrary();
-          var ss=comp.getSpriteSheet();
-          var queue = evt.target;
-          var ssMetadata = lib.ssMetadata;
-          for(var i=0; i<ssMetadata.length; i++) {
-            ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
-          }
-          this.exportRoot = new lib._005();
-          this.stage = new lib.Stage(this.canvas);
-          this.stage.addChild(this.exportRoot);	
-          //Registers the "tick" event listener.
-          this.fnStartAnimation = function() {
-            createjs.Ticker.setFPS(lib.properties.fps);
-            createjs.Ticker.addEventListener("tick", this.stage);
-          }	    
-          //Code to support hidpi screens and responsive scaling.
-          
-          this.makeResponsive(false,'both',false,1,lib);	
-          AdobeAn.compositionLoaded(lib.properties.id);
-          this.fnStartAnimation();
+      arrowHandler: function(add){
+        var currentPage = Number(this.el.substr(-1, 1));
+        if( this.slides.length > currentPage ) {
+            this.el = 'c5_'+ ( currentPage + add );
+            this.current = this.current+add;
+        } else{
+            this.el = 'c5_1';
+            this.current = 0;
+        }  
       }
-
+      
     }
   }
 </script>

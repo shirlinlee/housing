@@ -1,8 +1,5 @@
 <template>
-  <div>
-      <canvas :id="canvasId"></canvas>
-      
-  </div>
+    <canvas :id="canvasId" :class="{'fadeIn': laoded}"></canvas>
 </template>
 
 <script>
@@ -14,28 +11,29 @@
         canvas: null,
         stage: null, 
         exportRoot: null, 
-        fnStartAnimation: null
+        fnStartAnimation: null,         
+        laoded: false
       }
 
     },
     updated() {
-      console.log('4','updated');
+      // console.log('4','updated');
         
     },
     mounted() {
-      // console.log('5');
-      this.scriptTag = document.createElement("script");
-      this.scriptTag.src = `/static/js/${this.name}.js`;
-      this.scriptTag.id = `c${this.name}`;
-      document.getElementsByTagName('head')[0].appendChild(this.scriptTag);
+      this.$nextTick( ()=> {
+        this.scriptTag = document.createElement("script");
+        this.scriptTag.src = `/static/js/${this.name}.js`;
+        this.scriptTag.id = `c${this.name}`;
+        document.getElementsByTagName('head')[0].appendChild(this.scriptTag);
 
-      var $this = this;
-      this.$nextTick(function() {
-          setTimeout(function(){
-            $this.init();
-          },200)
+        const detectCreatJs = window.setInterval(()=>{
+        if( typeof AdobeAn !== 'undefined' && thisPage === this.name) {
+            this.init();
+            window.clearInterval(detectCreatJs)
+          }
+        }, 10);
       })
-
     },
     destroyed() {
         document.getElementsByTagName('head')[0].removeChild(this.scriptTag);
@@ -51,7 +49,7 @@
           this.canvas = document.getElementById(`canvas${this.name}`);
           var comp=AdobeAn.getComposition("29B0FD0BF3EE084FBC1FB84C88C5C164");
           var lib=comp.getLibrary();
-          var loader = new createjs.LoadQueue(false);
+          var loader = new createjs.LoadQueue(true);
           loader.addEventListener("fileload", function(evt){ $this.handleFileLoad(evt,comp)});
           loader.addEventListener("complete", function(evt){ $this.handleComplete(evt,comp)});
           var lib=comp.getLibrary();
@@ -61,9 +59,9 @@
           var images=comp.getImages();	
           if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
       },
-      resizeCanvas: function(lib,isResp,lastW, lastH, lastS) {			
+      resizeCanvas: function(lib,isResp,lastW, lastH, lastS, respDim, isScale, scaleType) {			
           var w = lib.properties.width, h = lib.properties.height;			
-          var iw = window.innerWidth, ih=window.innerHeight;			
+          var iw = window.innerWidth - 120, ih=window.innerHeight;			
           var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
           if(isResp) {                
             if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
@@ -89,10 +87,10 @@
           lastW = iw; lastH = ih; lastS = sRatio;		
       },
       makeResponsive: function (isResp, respDim, isScale, scaleType,lib) {		
+          var $this = this;	
           var lastW, lastH, lastS=1;		
-          window.addEventListener('resize', this.resizeCanvas);		
-          this.resizeCanvas(lib,isResp,lastW, lastH, lastS);		
-
+          window.onresize = ()=> { $this.resizeCanvas(lib,isResp,lastW, lastH, lastS, respDim, isScale, scaleType) };		
+          $this.resizeCanvas(lib,isResp,lastW, lastH, lastS, respDim, isScale, scaleType);	
       },
       handleComplete(evt,comp) {
         //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
@@ -103,6 +101,7 @@
           for(var i=0; i<ssMetadata.length; i++) {
             ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
           }
+          this.laoded = true;
           this.exportRoot = new lib._0403();
           this.stage = new lib.Stage(this.canvas);
           this.stage.addChild(this.exportRoot);	
@@ -113,7 +112,8 @@
           }	    
           //Code to support hidpi screens and responsive scaling.
           
-          this.makeResponsive(false,'both',false,1,lib);	
+          
+          this.makeResponsive(true,'width',false,1, lib);	
           AdobeAn.compositionLoaded(lib.properties.id);
           this.fnStartAnimation();
       }

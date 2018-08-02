@@ -1,108 +1,63 @@
 <template>
-  <div>
-      <canvas id="canvas6"></canvas>
-  </div>
+  
+  <div class="canvas_wrapper">
+    <transition name="canvas">
+      <div :is="el"/>
+    </transition>
+    <ul>
+      <li v-for="(slide,index) in slides" :class="{'active': current === index}" @click="currentHandler(index)">{{ slide }}</li>
+    </ul>
+    <a class="arrow" @click="arrowHandler(1)">></a> 
+
+  </div>  
 </template>
 
 <script>
+  import c1_1 from './C1-1';
+  import c1_2 from './C1-2';
+
+  
   export default {
     data(){
       return {
-        tab:0,
-        slides:[],
-        canvas: null,
-        stage: null, 
-        exportRoot: null, 
-        anim_container: null, 
-        fnStartAnimation: null
+        current:0,
+        slides:['牆開口腳偶補強','雙層配筋'],
+        el:'c1_1'
       }
 
+    },
+    components: {
+      'c1_1': c1_1,
+      'c1_2': c1_2
     },
     updated() {
     },
     mounted() {
-      // if (document.getElementById('canvas')) return; // was already loaded
-      var scriptTag = document.createElement("script");
-      scriptTag.src = "/static/js/010.js";
-      document.getElementsByTagName('head')[0].appendChild(scriptTag);
+      console.log('1');
       this.$nextTick(function() {
-         this.init();
       })
+
     },
     destroyed() {
     },
     methods: {
-      init:function () {
-          this.canvas = document.getElementById("canvas6");
-          var comp=AdobeAn.getComposition("8CCE5495B54D2E42A1C573624A16D5C1");
-          var lib=comp.getLibrary();
-          var loader = new createjs.LoadQueue(false);
-          loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
-          loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-          var lib=comp.getLibrary();
-          loader.loadManifest(lib.properties.manifest);
+      currentHandler:function(index){
+        if( this.current !== index) {
+          this.current = index;
+          this.el = "c1_"+(index+1);
+        }  
       },
-      handleFileLoad: function(){
-          var images=comp.getImages();	
-          if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
-      },
-      resizeCanvas: function() {			
-          var w = lib.properties.width, h = lib.properties.height;			
-          var iw = window.innerWidth, ih=window.innerHeight;			
-          var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
-          if(isResp) {                
-            if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
-              sRatio = lastS;                
-            }				
-            else if(!isScale) {					
-              if(iw<w || ih<h)						
-              sRatio = Math.min(xRatio, yRatio);				
-            }				
-            else if(scaleType==1) {					
-              sRatio = Math.min(xRatio, yRatio);				
-            }				
-            else if(scaleType==2) {					
-              sRatio = Math.max(xRatio, yRatio);				
-            }			
-          }			
-          this.canvas.width = w*pRatio*sRatio;			
-          this.canvas.height = h*pRatio*sRatio;
-          this.canvas.style.width = this.anim_container.style.width =  w*sRatio+'px';				
-          this.canvas.style.height = this.anim_container.style.height = h*sRatio+'px';
-          stage.scaleX = pRatio*sRatio;			
-          stage.scaleY = pRatio*sRatio;			
-          lastW = iw; lastH = ih; lastS = sRatio;		
-      },
-      makeResponsive: function (isResp, respDim, isScale, scaleType) {		
-          var lastW, lastH, lastS=1;		
-          window.addEventListener('resize', resizeCanvas);		
-          this.resizeCanvas();		
-
-      },
-      handleComplete(evt,comp) {
-        //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-          var lib=comp.getLibrary();
-          var ss=comp.getSpriteSheet();
-          var queue = evt.target;
-          var ssMetadata = lib.ssMetadata;
-          for(i=0; i<ssMetadata.length; i++) {
-            ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
-          }
-          exportRoot = new lib._010();
-          stage = new lib.Stage(canvas);
-          stage.addChild(exportRoot);	
-          //Registers the "tick" event listener.
-          this.fnStartAnimation = function() {
-            createjs.Ticker.setFPS(lib.properties.fps);
-            createjs.Ticker.addEventListener("tick", stage);
-          }	    
-          //Code to support hidpi screens and responsive scaling.
-          
-          this.makeResponsive(false,'both',false,1);	
-          AdobeAn.compositionLoaded(lib.properties.id);
-          this.fnStartAnimation();
+      arrowHandler: function(add){
+        var currentPage = Number(this.el.substr(-1, 1));
+        if( this.slides.length > currentPage ) {
+            this.el = 'c1_'+ ( currentPage + add );
+            this.current = this.current+add;
+        } else{
+            this.el = 'c1_1';
+            this.current = 0;
+        }  
       }
-
+      
     }
   }
 </script>

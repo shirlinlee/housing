@@ -1,6 +1,6 @@
 <template>
   <div>
-      <canvas :id="canvasId"></canvas>
+      <canvas :id="canvasId" :class="{'fadeIn': laoded}"></canvas>
       
   </div>
 </template>
@@ -13,7 +13,8 @@
         canvas: null,
         stage: null, 
         exportRoot: null, 
-        fnStartAnimation: null
+        fnStartAnimation: null,                  
+        laoded: false
       }
 
     },
@@ -22,19 +23,19 @@
         
     },
     mounted() {
-      // console.log('5');
-      this.scriptTag = document.createElement("script");
-      this.scriptTag.src = `/static/js/${this.name}.js`;
-      this.scriptTag.id = `c${this.name}`;
-      document.getElementsByTagName('head')[0].appendChild(this.scriptTag);
+      this.$nextTick( ()=> {
+        this.scriptTag = document.createElement("script");
+        this.scriptTag.src = `/static/js/${this.name}.js`;
+        this.scriptTag.id = `c${this.name}`;
+        document.getElementsByTagName('head')[0].appendChild(this.scriptTag);
 
-      var $this = this;
-      this.$nextTick(function() {
-          setTimeout(function(){
-            $this.init();
-          },200)
+        const detectCreatJs = window.setInterval(()=>{
+        if( typeof AdobeAn !== 'undefined' && thisPage === this.name) {
+            this.init();
+            window.clearInterval(detectCreatJs)
+          }
+        }, 50);
       })
-
     },
     destroyed() {
         document.getElementsByTagName('head')[0].removeChild(this.scriptTag);
@@ -60,9 +61,10 @@
           var images=comp.getImages();	
           if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
       },
-      resizeCanvas: function(lib,isResp,lastW, lastH, lastS) {			
+      resizeCanvas: function(lib,isResp,lastW, lastH, lastS, respDim, isScale, scaleType) {			
+          // console.log(lib);
           var w = lib.properties.width, h = lib.properties.height;			
-          var iw = window.innerWidth, ih=window.innerHeight;			
+          var iw = window.innerWidth - 120, ih=window.innerHeight;			
           var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
           if(isResp) {                
             if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
@@ -87,10 +89,11 @@
           this.stage.scaleY = pRatio*sRatio;			
           lastW = iw; lastH = ih; lastS = sRatio;		
       },
-      makeResponsive: function (isResp, respDim, isScale, scaleType,lib) {		
+      makeResponsive: function (isResp, respDim, isScale, scaleType,lib) {	
+          var $this = this;	
           var lastW, lastH, lastS=1;		
-          window.addEventListener('resize', this.resizeCanvas);		
-          this.resizeCanvas(lib,isResp,lastW, lastH, lastS);		
+          window.onresize = ()=> { $this.resizeCanvas(lib,isResp,lastW, lastH, lastS, respDim, isScale, scaleType) };			
+          this.resizeCanvas(lib,isResp,lastW, lastH, lastS, respDim, isScale, scaleType);		
 
       },
       handleComplete(evt,comp) {
@@ -102,6 +105,7 @@
           for(var i=0; i<ssMetadata.length; i++) {
             ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
           }
+          this.laoded = true;
           this.exportRoot = new lib._006();
           this.stage = new lib.Stage(this.canvas);
           this.stage.addChild(this.exportRoot);	
@@ -112,7 +116,7 @@
           }	    
           //Code to support hidpi screens and responsive scaling.
           
-          this.makeResponsive(false,'both',false,1,lib);	
+          this.makeResponsive(true,'width',false,1, lib);	
           AdobeAn.compositionLoaded(lib.properties.id);
           this.fnStartAnimation();
       }

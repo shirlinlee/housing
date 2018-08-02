@@ -18,12 +18,11 @@
         navs:[
           {'title': '品牌概念','details':[]},
           {'title': '建築團隊','details':['城中理念','城中實蹟','團隊成員']},
-          {'title': '建築規劃','details':[]},
+          {'title': '建築規劃','details':['建築設計理念','立面篇','公設篇']},
           {'title': '建築工程','details':['結構工程','防水對策','管道設計','靜音美學','活氧通風']},
-          {'title': '周邊環境','details':[]},
-          {'title': '平面傢配','details':[]},
+          {'title': '周邊環境','details':['生活機能圖','音樂篇','人文篇','生活篇','交通篇']},
+          {'title': '平面傢配','details':['傢配圖','墨線圖']},
         ]
-
       }
     },
     //actions 响应在view上的用户输入导致的状态变化
@@ -32,7 +31,7 @@
         this.$store.commit('nav', num);
       },
       changeTab (tab, num) {
-        console.log(tab, num);
+        // console.log(tab, num);
         this.$store.commit('tab', {tab, num});
       },
       getIndex (index) {

@@ -1,9 +1,11 @@
 <template>
   <div id="wrapper">
-    <hr>
     <Nav/>
-    <div class="veiw" :is="showItem"/>
-  </div>
+    <transition name="fade">
+      <div class="veiw" :is="showItem"/>
+    </transition>
+  </div>  
+    
 </template>
 
 <script>
@@ -46,10 +48,12 @@ export default {
 
 <style lang="scss">
   @import '~/static/css/reset.css';
+  @import '~/static/css/init.css';
+  
   body {
     min-height: 100vh;
     min-width: 100vw;
-    background-color: #ddd;
+    background-color: pink
   }
   #wrapper{
     

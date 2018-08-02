@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <div :is="detailHandler"/>
-  </div>
+    <transition name="fade"><div :is="detailHandler"/></transition>
 </template>
 
 <script>
