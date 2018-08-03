@@ -1,9 +1,7 @@
 <template>
   <div id="wrapper">
-    <Nav/>
-    <transition name="fade">
-      <div class="veiw" :is="showItem"/>
-    </transition>
+    <Nav />
+    <div :is="showItem"/>
   </div>  
     
 </template>
@@ -11,6 +9,7 @@
 <script>
 import Nav from './components/Nav'
 
+import MainPage from './content/Main';
 import conent1 from './content/Content1';
 import conent2 from './content/Content2';
 import conent3 from './content/Content3';
@@ -31,12 +30,13 @@ export default {
   },
   components: {
     Nav,
+    'C0':MainPage,
     'C1':conent1,
     'C2':conent2,
     'C3':conent3,
     'C4':conent4,
     'C5':conent5,
-    'C6':conent6,
+    'C6':conent6
   },
   computed: {
     showItem () {
@@ -47,15 +47,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '~/static/css/reset.css';
   @import '~/static/css/init.css';
-  
-  body {
-    min-height: 100vh;
-    min-width: 100vw;
-    background-color: pink
-  }
-  #wrapper{
-    
-  }
 </style>

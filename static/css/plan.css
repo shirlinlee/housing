@@ -1,0 +1,132 @@
+.floor-tab a {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+@-webkit-keyframes donut-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes donut-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.wrap {
+  padding-right: 185px;
+}
+
+@media screen and (max-width: 1366px) {
+  .wrap {
+    padding-right: 160px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrap {
+    padding: 0;
+  }
+}
+
+.wrap .arrowBox a {
+  background: rgba(225, 225, 225, .4);
+}
+
+.wrap-plan1 {
+  background: url(../img/bg-5.png);
+}
+
+.wrap-plan1 main {
+  width: 65%;
+  margin: auto;
+  padding-top: 160px;
+}
+
+.wrap-plan2 {
+  padding-top: 120px;
+}
+
+.room115 {
+  width: 750px;
+}
+
+.room150 {
+  width: 650px;
+}
+
+.roomplan {
+  margin: auto;
+}
+
+.floor {
+  width: 1100px;
+}
+
+.floor-tab {
+  left: 0;
+  bottom: 8%;
+  width: calc(100% - 185px);
+  position: fixed;
+}
+
+@media screen and (max-width: 1366px) {
+  .floor-tab {
+    width: calc(100% - 160px);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .floor-tab {
+    width: 100%;
+  }
+}
+
+.floor-tab ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.floor-tab a {
+  font-size: 25.6px;
+  font-size: 1.6rem;
+  color: #000;
+  margin: 0 10px;
+  letter-spacing: 1px;
+}
+
+.floor-tab a:hover {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+.floor-tab li:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+.floor-tab .active {
+  color: #6f6f6f;
+}
+
+/*# sourceMappingURL=plan.css.map */

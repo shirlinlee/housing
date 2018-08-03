@@ -1,20 +1,56 @@
 <template>
-  <ul class="nav">
-    <li v-for="(nav,index) in navs" :class="{'active': $store.state.show === getIndex(index) }">
-      <h6 @click="changeContent(getIndex(index))"> {{nav.title}}</h6> 
-      <p v-for="(detail,i) in nav.details" :class="{'active': $store.state[`c${getIndex(index)}_tab`] === getIndex(i) }"  @click="changeTab( getIndex(index), getIndex(i))">{{ detail }}</p>
-    </li>
-  
-    {{ this.$store.state.c2_tab }}
-    {{ this.$store.state.c4_tab }}
-    
-  </ul>
+  <header :class="{'header-w': $store.state.isBlackTheme}">
+      <a class="logo" href="javascript:;"> 
+        <img src="/static/asset/svg/logo-b.svg" alt="logo" v-if="!$store.state.isBlackTheme">
+        <img src="/static/asset/svg/logo-w.svg" alt="logo" v-else>
+      </a>
+      <div class="button_container" id="toggle" @click="navHandler" :class="{'active': navOpen }">
+        <span class="top"></span>  
+        <span class="middle"></span>  
+        <span class="bottom"></span>
+      </div>
+      <div class="overlay" id="overlay">
+        <nav class="overlay-menu"> 
+          <ul>
+            <li v-for="(nav,index) in navs">
+              <a href="javascript:;" class="toggle" :class="{'active': $store.state.show === getIndex(index) }" @click="changeContent(getIndex(index))">{{nav.title}}
+                <span class="arrow sub-open-arrow">
+                  <img src="/static/asset/svg/menu-arrow.svg"/>
+                </span>
+              </a>
+              <div class="sub">
+                <ul>
+                  <li v-for="(detail,i) in nav.details" ><a href="javascript:;" :class="{'active': $store.state[`c${getIndex(index)}_tab`] === getIndex(i) }" @click="changeTab( getIndex(index), getIndex(i))">{{ detail }}</a></li>
+                </ul>
+              </div>
+            </li>      
+          </ul>
+        </nav>
+      </div>
+      <!-- pc menu-->
+      <nav class="nav-pc">
+        <ul>
+          <li class="tab" v-for="(nav,index) in navs" :class="{'open': $store.state.show === getIndex(index) }">
+            <a href="javascript:;" class="toggle" :class="{'active': $store.state.show === getIndex(index) }" @click="changeContent(getIndex(index))">{{nav.title}}</a>
+            <div class="sub">
+              <ul>
+                <li v-for="(detail,i) in nav.details">
+                  <a href="javascript:;" :class="{'active': $store.state[`c${getIndex(index)}_tab`] === getIndex(i) }" @click="changeTab( getIndex(index), getIndex(i))">{{ detail }}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
 </template>
 
 <script>
+
   export default {
     data() {
       return {
+        navOpen: false,
         navs:[
           {'title': '品牌概念','details':[]},
           {'title': '建築團隊','details':['城中理念','城中實蹟','團隊成員']},
@@ -25,10 +61,19 @@
         ]
       }
     },
-    //actions 响应在view上的用户输入导致的状态变化
+
+    mounted() {
+      $('#toggle').click(function() {
+        $(this).toggleClass('active');
+        $('#overlay').toggleClass('open');
+      });
+    },  
     methods: {
+      navHandler() {
+        this.navOpen = !this.navOpen;
+      },
       changeContent (num) {
-        this.$store.commit('nav', num);
+        this.$store.dispatch('navAndTheme', num);
       },
       changeTab (tab, num) {
         // console.log(tab, num);
@@ -44,54 +89,24 @@
     }
   }
 </script>
-<style lang="scss">
-  .nav {
-    color: #000;
-    position: fixed;
-    transform: translate(0, -50%);
-    top: 50%;
-    right: 0;
-    width:110px;
-    li {
-      font-size: 17px;
-      line-height: 3;
-      width:100%;
-      position: relative;
-      cursor: pointer;
-      &.active{
-        p {
-          height: 25px;
+<style lang="scss" scoped>
+  .nav-pc {
+    .tab {
+      .sub li {
+        height: 0; 
+        opacity:0; 
+        transition: height .4s;
+        
+      }
+      &.open {
+        .sub li{
+          height: 40px;
           opacity:1;
         }
       }
-      &.active:after {
-        content: "";
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #000;
-        left: -12px;
-        top: 23px;
-      }
-      p {
-         font-size: 14px;
-         line-height: 25px;
-         padding-left: 8px;
-         border-left: 3px solid transparent;
-         height: 0;
-         opacity:0;
-         overflow: hidden;
-         transition: all .4s;
-         &:first-child {
-           margin-top: -5px;
-         }
-         &.active {
-          border-left: 3px solid #000;
-        }
-      }
-      
-    }
+    } 
+    
+    
   }
   
 </style>

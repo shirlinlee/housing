@@ -1,0 +1,110 @@
+main, .engrgBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+@-webkit-keyframes donut-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes donut-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.wrap {
+  padding-right: 185px;
+  background: url(../img/bg-wall.jpg);
+}
+
+@media screen and (max-width: 1366px) {
+  .wrap {
+    padding-right: 160px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrap {
+    padding: 0;
+  }
+}
+
+.sq-tab a {
+  width: 165px;
+}
+
+main {
+  padding-top: 150px;
+  width: 75%;
+  margin: auto;
+}
+
+.left {
+  width: 800px;
+  height: 768px;
+}
+
+.right {
+  width: calc(100% - 800px);
+  padding-right: 50px;
+}
+
+.txt {
+  border-bottom: 1px solid black;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.txt span.abs {
+  top: -50px;
+  left: -50px;
+}
+
+h3 {
+  font-size: 48px;
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+.main-p {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.dot {
+  padding-left: 20px;
+  position: relative;
+}
+
+.dot::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 5px;
+  top: 11px;
+  height: 5px;
+  width: 5px;
+  background: #000;
+}
+
+/*# sourceMappingURL=engrg.css.map */

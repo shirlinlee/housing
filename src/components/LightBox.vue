@@ -1,10 +1,8 @@
 <template>
-    <!-- <transition name="fade"> -->
-        <div class="black" v-show="isShow" @click="$emit('openLb','', false)">  
-            <img :src="'/static/images/'+picName" :class="{ 'show': isShow }">
-        </div> 
-    <!-- </transition> -->
-    
+    <div class="popup" v-show="isShow" @click="$emit('openLb','', false)">
+        <a class="close abs" href="javascript:;" @click="$emit('openLb','', false)"><img src="/static/asset/svg/close.svg"/></a>
+        <div class="content"><img :src="'/static/img/'+picName" :class="{ 'show': isShow }"/></div>
+    </div>
 </template>
 
 <script>
@@ -22,30 +20,7 @@
   }
 </script>
 <style lang="scss">
-    .black{
-        // opacity: 0;
-        // transform: scale(0);
-        width: 100%;
-        height: 100vh;
-        position: fixed;
-        background: rgba(0,0,0,.6);
-        // transition: opacity 1s;
+    .popup {
         top: 0;
-        left: 0;
-        img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            opacity:0;
-            transform: translate(-50%, 0);
-            width: 80%;
-            transition: all .3s .5s;
-        }
-    }
-
-    .black img.show {
-        // animate: 
-        opacity: 1;
-        transform: translate(-50%, -50%);
     }
 </style>
