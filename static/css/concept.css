@@ -94,7 +94,7 @@ section .content {
 }
 
 .pic {
-  width: 580px;
+  width: 600px;
 }
 
 @media screen and (max-width: 1366px) {
@@ -151,7 +151,7 @@ section .content {
   content: '';
   display: block;
   width: 100%;
-  height: 230px;
+  height: 250px;
   background: white;
   position: absolute;
   -webkit-transform: skewY(7deg);
@@ -203,6 +203,10 @@ section .content {
   }
 }
 
+.box2 .content {
+  margin-top: 35px;
+}
+
 @media screen and (max-width: 960px) {
   .box2 .content {
     -webkit-box-orient: vertical;
@@ -232,9 +236,9 @@ section .content {
 }
 
 .box2 .txt {
-  max-width: 460px;
+  max-width: 630px;
   margin-top: 50px;
-  padding: 70px 70px 0 0;
+  padding: 60px 60px 0 0;
 }
 
 @media screen and (max-width: 1366px) {
@@ -313,7 +317,7 @@ section .content {
 }
 
 .box3 .txt {
-  max-width: 550px;
+  max-width: 680px;
   margin-top: 70px;
   margin-left: -90px;
 }

@@ -1,3 +1,8 @@
+.wrap-life2 .pic2, .wrap-life2 .pic3 {
+  -webkit-box-shadow: 0px 9px 28.42px 0.58px rgba(12, 11, 12, .11);
+  box-shadow: 0px 9px 28.42px 0.58px rgba(12, 11, 12, .11);
+}
+
 @-webkit-keyframes donut-spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -53,6 +58,229 @@
   width: 35px;
   bottom: 15px;
   right: 15px;
+}
+
+.wrap-life2 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 65%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-top: 50px;
+}
+
+.wrap-life2 .picBox {
+  width: 600px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.wrap-life2 .pic2 {
+  left: -18%;
+  top: -8%;
+}
+
+.wrap-life2 .pic3 {
+  bottom: -3%;
+  right: -6%;
+}
+
+.wrap-life2 .txt {
+  background: white;
+  width: calc(100% - 600px);
+  padding: 50px;
+  margin-left: 30px;
+}
+
+.wrap-life2 .bg {
+  top: 0;
+  right: 0;
+}
+
+.wrap-life3 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.wrap-life3 .txt {
+  background: rgba(255, 255, 255, .9);
+  width: 640px;
+  padding: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.wrap-life3 .left,
+.wrap-life3 .right {
+  width: 50%;
+  height: 100vh;
+}
+
+.wrap-life3 .left {
+  background: url(../img/4-3-1.jpg) no-repeat center/cover;
+}
+
+.wrap-life3 .right {
+  background: url(../img/4-3-2.jpg) no-repeat center/cover;
+}
+
+h3 {
+  color: #626262;
+  margin: 10px 0;
+  font-size: 44.8px;
+  font-size: 2.8rem;
+}
+
+.wrap-life4 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bgBox {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.bgBox > div {
+  height: 25vh;
+}
+
+.bgBox1 {
+  width: 28.57143%;
+}
+
+.bgBox1 > div {
+  width: 50%;
+}
+
+.bgBox1 .box1 {
+  background: url(../img/4-4-p13.png) center/cover;
+}
+
+.bgBox1 .box2 {
+  background: url(../img/4-4-p01.png) center/cover;
+}
+
+.bgBox1 .box3 {
+  background: url(../img/4-4-p02.png) center/cover;
+}
+
+.bgBox1 .box4 {
+  background: url(../img/4-4-p03.png) center/cover;
+}
+
+.bgBox1 .box5 {
+  background: url(../img/4-4-p04.png) center/cover;
+}
+
+.bgBox1 .box6 {
+  background: url(../img/4-4-p05.png) center/cover;
+}
+
+.bgBox1 .box7 {
+  background: url(../img/4-4-p06.png) center/cover;
+}
+
+.bgBox1 .box8 {
+  background: url(../img/4-4-p07.png) center/cover;
+}
+
+.bgBox2 {
+  width: 57.14286%;
+}
+
+.bgBox2 > div {
+  width: 25%;
+}
+
+.bgBox2 .box1 {
+  background: url(../img/4-4-p12.png) center/cover;
+}
+
+.bgBox2 .box2 {
+  background: url(../img/4-4-p14.png) center/cover;
+}
+
+.bgBox2 .box3 {
+  background: url(../img/4-4-p15.png) center/cover;
+}
+
+.bgBox2 .box4 {
+  background: url(../img/4-4-p16.png) center/cover;
+}
+
+.bgBox2 .box5 {
+  background: url(../img/4-4-p19.png) center/cover;
+}
+
+.bgBox2 .box6 {
+  background: url(../img/4-4-p20.png) center/cover;
+}
+
+.bgBox2 .box7 {
+  background: url(../img/4-4-p08.png) center/cover;
+}
+
+.bgBox2 .box8 {
+  background: url(../img/4-4-p09.png) center/cover;
+}
+
+.bgBox2 .txtbox {
+  width: 100%;
+  height: 50vh;
+  padding: 30px;
+}
+
+.bgBox3 {
+  width: 14.28571%;
+}
+
+.bgBox3 > div {
+  width: 100%;
+}
+
+.bgBox3 .box1 {
+  background: url(../img/4-4-p21.png) center/cover;
+}
+
+.bgBox3 .box2 {
+  background: url(../img/4-4-p22.png) center/cover;
+}
+
+.bgBox3 .box3 {
+  background: url(../img/4-4-p23.png) center/cover;
+}
+
+.bgBox3 .box4 {
+  background: url(../img/4-4-p24.png) center/cover;
+}
+
+.wrap-life5 .pic {
+  width: 60%;
+  height: 100vh;
+  background: url(../img/4-5.jpg) no-repeat center/cover;
+}
+
+.wrap-life5 .txt {
+  width: 600px;
+  background: #fff;
+  padding: 50px 0 50px 50px;
+  z-index: 1;
+  bottom: 5%;
+  right: 20%;
 }
 
 /*# sourceMappingURL=life.css.map */

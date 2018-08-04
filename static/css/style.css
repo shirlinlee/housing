@@ -204,14 +204,14 @@ h6 {
 
 @font-face {
   font-family: "NotoS";
-  src: local(NotoSerifCJKtc-Bold), url(/static/fonts/NotoSerifCJKtc-Bold.otf);
+  src: local(NotoSerifCJKtc-Bold), url(../fonts/NotoSerifCJKtc-Bold.otf);
   font-style: normal;
   font-weight: 700; }
 
 @font-face {
   font-family: "NotoS";
   font-weight: 700;
-  src: local(NotoSerifCJKtc-Medium), url(/static/fonts/NotoSerifCJKtc-Medium.otf);
+  src: local(NotoSerifCJKtc-Medium), url(../fonts/NotoSerifCJKtc-Medium.otf);
   font-style: normal;
   font-weight: 600; }
 
@@ -272,7 +272,7 @@ section {
   font-size: 110px;
   font-size: 11rem;
   line-height: 0.8;
-  color: rgba(0, 0, 0, .04);
+  color: rgba(0, 0, 0, .06);
   top: 0;
   left: 10px;
   font-weight: bold; }
@@ -290,8 +290,8 @@ section {
       font-size: 6.5rem; } }
 
 .tt-page {
-  font-size: 46px;
-  font-size: 4.6rem;
+  font-size: 50px;
+  font-size: 5rem;
   line-height: 1.2; }
   @media screen and (max-width: 1366px) {
     .tt-page {
@@ -461,7 +461,7 @@ section {
       margin: 10px 0; } }
 
 .main-txt {
-  padding: 70px 0 0 70px; }
+  padding: 60px 0 0 60px; }
   @media screen and (max-width: 1366px) {
     .main-txt {
       padding: 45px 0 0 45px; } }
@@ -498,15 +498,15 @@ section {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%); }
   .sq-tab a {
-    width: 130px;
-    height: 45px;
-    line-height: 45px;
+    width: 155px;
+    height: 50px;
+    line-height: 50px;
     border: 1px solid black;
     color: #000;
     margin: 0 10px;
     text-align: center;
-    font-size: 18px;
-    font-size: 1.8rem; }
+    font-size: 20px;
+    font-size: 2rem; }
     .sq-tab a:hover {
       background: #000;
       color: #fff;
@@ -675,8 +675,8 @@ html {
   font-size: 62.5%; }
 
 body {
-  font-size: 16px;
-  font-size: 1.6rem; }
+  font-size: 24px;
+  font-size: 2.4rem; }
 
 html,
 body {
@@ -684,7 +684,7 @@ body {
   min-height: 100vh;
   min-width: 320px;
   font-weight: 600;
-  line-height: 1.7;
+  line-height: 1.6;
   word-wrap: break-word;
   color: black;
   margin: 0;
@@ -788,16 +788,16 @@ header {
     .nav-pc .active:before {
       background: #000; }
   .nav-pc a {
-    font-size: 22px;
-    font-size: 2.2rem;
+    font-size: 26px;
+    font-size: 2.6rem;
     font-weight: bold;
     padding-left: 30px; }
     @media screen and (max-width: 1366px) {
       .nav-pc a {
         font-size: 2rem; } }
   .nav-pc .sub a {
-    font-size: 18px;
-    font-size: 1.8rem;
+    font-size: 20px;
+    font-size: 2rem;
     padding-left: 45px;
     margin: 5px 0; }
   .nav-pc .sub .active {
