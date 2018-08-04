@@ -2,6 +2,7 @@ export default {
   // 存储状态值
   state: {
     show: '0',
+    isWebsite: false,
     c2_tab: '1',
     c3_tab: '1',
     c4_tab: '1',

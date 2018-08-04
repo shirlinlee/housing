@@ -4,8 +4,8 @@
         <main>
           <div class="engrgBox" v-for="(slide,index,key) in slides" :key="key" v-if="current===index">
             <div class="left">
-              <div class="pic" :is="'c3_'+(index+1)">
-              </div>
+              <div class="pic" :is="'c3_'+(index+1)" v-if="!$store.state.isWebsite"/>
+              <div class="pic" v-else><img :src="'/static/img/'+slide.srcName"/></div>
             </div>
             <div class="right" v-html="slide.text"/>
           </div>
