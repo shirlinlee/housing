@@ -19,8 +19,7 @@
 
     },
     updated() {
-      console.log('3','updated');
-        
+ 
     },
     mounted() {
       this.$nextTick( ()=> {

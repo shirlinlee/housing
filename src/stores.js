@@ -1,7 +1,7 @@
 export default {
   // 存储状态值
   state: {
-    show: '6',
+    show: '0',
     c2_tab: '1',
     c3_tab: '1',
     c4_tab: '1',
@@ -13,11 +13,11 @@ export default {
   mutations: {
     // 主選單點擊, 次選單也要重新顯示第一個
     nav(state, num) {
-      // console.log(num,'store');
+      console.log(state.show, num,'store');
+      if( state.show === num ) return;
       state.show = num;
       state[`c${num}_tab`] = '1'; 
       state.isBlackTheme = false;
-
     },
      // 次選單
     tab(state, tab) {
@@ -32,13 +32,9 @@ export default {
   actions: {
     // 这里使用context来提交mutations
     navAndTheme (context, num) {
-      console.log(context, num);
+      // console.log(context, num);
       context.commit('nav',num);
     },
-    // tab (context) {
-    //   context.commit('tab');
-    // },
-    
   },
   // 在store中定义getters（可以认为是store的计算属性）。Getters接收state作为其第一个函数
   getters: {

@@ -1,6 +1,6 @@
 <template>
   <header :class="{'header-w': $store.state.isBlackTheme}">
-      <a class="logo" href="javascript:;"> 
+      <a class="logo" href="javascript:;" @click="changeContent(getIndex(-1))"> 
         <img src="/static/asset/svg/logo-b.svg" alt="logo" v-if="!$store.state.isBlackTheme">
         <img src="/static/asset/svg/logo-w.svg" alt="logo" v-else>
       </a>
