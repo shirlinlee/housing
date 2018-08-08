@@ -1,14 +1,13 @@
 (function (cjs, an) {
+
+	console.log('an1-2', an);
 	
 	var p; // shortcut to reference prototypes
 	var lib={};var ss={};var img={};
+
 	lib.ssMetadata = [
 			{name:"004_atlas_", frames: [[475,0,473,367],[0,369,510,287],[0,0,473,367]]}
 	];
-	
-	
-	// symbols:
-	
 	
 	
 	(lib.image18 = function() {

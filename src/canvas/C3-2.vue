@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img src="/static/images/011.png">
+      <img src="/static/img/6-3-2.png">
       
   </div>
 </template>
@@ -22,7 +22,7 @@
          
       })
     },
-    destroyed() {
+    beforeDestroy() {
     },
     computed: {
       canvasId: function(){

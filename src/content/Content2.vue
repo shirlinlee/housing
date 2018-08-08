@@ -16,48 +16,70 @@
       </div>
       <div class="wrap wrap-team2" :key="'tab2'" v-if="$store.state.c2_tab === showItem(1)">
         <span class="page">about team</span>
-        <main class="mapBG mapBG-2-2">
-          <!-- <a class="map map1 abs" href="javascript:;"></a>
-          <a class="map map2 abs" href="javascript:;"></a>
-          <a class="map map3 abs" href="javascript:;"></a>
-          <a class="map map4 abs" href="javascript:;"></a>
-          <a class="map map5 abs" href="javascript:;"></a>
-          <a class="map map6 abs" href="javascript:;"></a>
-          <a class="map map7 abs" href="javascript:;"></a>
-          <a class="map map8 abs" href="javascript:;"></a>
-          <a class="map map9 abs" href="javascript:;"></a> -->
+        <main>
+          <h2 class="tt-page">城中實績</h2>
+          <div class="content">
+            <div class="box">
+              <a class="cc1-1" href="javascript:;" @click="openLb('cc1-1.jpg', true,'' )"></a>
+              <a class="cc1-2" href="javascript:;" @click="openLb('cc1-2.jpg', true,'' )"></a>
+              <p> <span>2005 青田懷石 / 2006 青田階 </span></p>
+            </div>
+            <div class="box">
+              <a class="cc2"  href="javascript:;" @click="openLb('cc2.jpg', true,'' )"></a>
+              <p> <span>2007 新語堂</span></p>
+            </div>
+            <div class="box">
+              <a class="cc3-1"  href="javascript:;" @click="openLb('cc3-1.jpg', true,'' )"></a>
+              <a class="cc3-2"  href="javascript:;" @click="openLb('cc3-2.jpg', true,'' )"></a>
+              <p> <span>2008 青田若隱 / 2011 有余</span></p>
+            </div>
+            <div class="box">
+              <a class="cc4"  href="javascript:;" @click="openLb('cc4.jpg', true,'' )"></a>
+              <p> <span>2012 城品</span></p>
+            </div>
+            <div class="box">
+              <a class="cc5"  href="javascript:;" @click="openLb('cc5.jpg', true,'' )"> </a>
+              <p> <span>2014 閱狷聲</span></p>
+            </div>
+            <div class="box">
+              <a class="cc6-1"  href="javascript:;" @click="openLb('cc6-1.jpg', true,'' )"></a>
+              <a class="cc6-2"  href="javascript:;" @click="openLb('cc6-2.jpg', true,'' )"></a>
+              <p> <span>2016 愛吾家 / 2018 愛吾家二期</span></p>
+            </div>
+          </div>
         </main>
       </div>
       <div class="wrap wrap-team3" :key="'tab3'" v-if="$store.state.c2_tab === showItem(2)"><span class="page">about team</span>
         <main class="por">
-          <div class="content" v-for="(member,index,key) in members" :key="key" v-show="currentData(2,index)">
-            <div class="member"><img :src="'/static/img/'+member.picName"/>
-            </div>
-            <div class="info">
-              <p class="name">{{ member.name }}</p>
-              <p class="title" v-html="member.title" />
-              <p class="des" v-html="member.des" />
-              <p class="histroy" v-html="member.histroy" />
-            </div>
-          </div>
-          <div class="pubaoContent" v-show="currentData(2,5)">
-            <div class="pubao">
-              <p class="name">璞寶營造</p>
-              <p class="des"> <strong>台灣璞寶營造本營建技術見證歷史</strong></p>
-              <p class="des">璞寶營造，乃貫徹與實踐一璞園建築的精柛而誕生，建築的價值來目用心執行與理想堅持的過程。</p>
-              <p class="des">對璞園團隊-璞寶營造來說，謍造工程是成就建築的手工藝術，以超越自己為勵、持續術研修，禮聘竹中工務店，前工務所所長田中純夫擔任顧問(田中建築)，力求規劃與工程的精益隶精，我們深刻體驗工地文化的養成並非一夕之間，璞園團隊率先做起，並懂得對環境尊重與理想堅持。</p>
-              <div class="photoBox">
-                <ul>
-                  <li v-for="photo in photoBoxs">
-                    <div class="pic"><img :src="'/static/img/'+photo.picName"/>
-                    </div>
-                    <p><span class="square"></span><span>{{photo.name}}</span></p>
-                  </li>
-                  
-                </ul>
+          <transition-group name="fade">
+            <div class="content" v-for="(member,index,key) in members" :key="'key'+index" v-if="currentData(2,index)">
+              <div class="member"><img :src="'/static/img/'+member.picName" v-if="index!==5"/></div>
+              <div class="info">
+                <p class="name">{{ member.name }}</p>
+                <p class="title" v-html="member.title" />
+                <p class="des" v-html="member.des" />
+                <p class="histroy" v-html="member.histroy" />
               </div>
             </div>
-          </div>
+            <div class="pubaoContent" :key="'key6'" v-if="currentData(2,5)">
+              <div class="pubao">
+                <p class="name">璞寶營造</p>
+                <p class="des"> <strong>台灣璞寶營造本營建技術見證歷史</strong></p>
+                <p class="des">璞寶營造，乃貫徹與實踐一璞園建築的精柛而誕生，建築的價值來目用心執行與理想堅持的過程。</p>
+                <p class="des">對璞園團隊-璞寶營造來說，謍造工程是成就建築的手工藝術，以超越自己為勵、持續術研修，禮聘竹中工務店，前工務所所長田中純夫擔任顧問(田中建築)，力求規劃與工程的精益隶精，我們深刻體驗工地文化的養成並非一夕之間，璞園團隊率先做起，並懂得對環境尊重與理想堅持。</p>
+                <div class="photoBox">
+                  <ul>
+                    <li v-for="photo in photoBoxs">
+                      <div class="pic"><img :src="'/static/img/'+photo.picName"/>
+                      </div>
+                      <p><span class="square"></span><span>{{photo.name}}</span></p>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </transition-group>
           <div class="arrowBox">
             <div class="arrow">
                 <a href="javascript:;" @click="arrowHandler(2,-1)" :class="{'transparent': current2===0 }"><span></span></a>
@@ -73,10 +95,10 @@
         </main>
         <div class="cube"></div>
       </div>
-      <LB :key="'lb'":picName="lbPic" :isShow="lbShow" @openLb="openLb" /> 
     </transition-group>
+    <LB :picName="lbPic" v-if="lbShow" @openLb="openLb" :isTeam="true" :el="el" />
+ 
   </div>
-  
 </template>
 
 <script>
@@ -127,7 +149,8 @@
           
         ], 
         lbPic: '',
-        lbShow: false
+        lbShow: false,
+        el: null
       }
   
     },
@@ -158,10 +181,11 @@
       showItem(index) {
         return (index + 1).toString()
       },
-      openLb(name, isShow) {
-        console.log(name, isShow);
+      openLb(name, isShow, el) {
+        // console.log(name, isShow);
         this.lbPic = name;
         this.lbShow = isShow;
+        this.el = el;
       }
     },
     mounted() {

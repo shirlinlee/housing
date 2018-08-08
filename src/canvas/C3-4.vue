@@ -27,7 +27,7 @@
       })
 
     },
-    destroyed() {
+    beforeDestroy() {
     },
     computed: {
     },

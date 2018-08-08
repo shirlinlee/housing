@@ -1,3 +1,8 @@
+.wrap-archi3 .sq-tab a {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
 .des .desBox {
   text-align: justify;
   text-justify: inter-ideographic;
@@ -122,6 +127,22 @@
   flex-direction: column;
 }
 
+.wrap-archi3 .top {
+  padding-right: 185px;
+}
+
+@media screen and (max-width: 1366px) {
+  .wrap-archi3 .top {
+    padding-right: 160px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrap-archi3 .top {
+    padding: 0;
+  }
+}
+
 .wrap-archi3 .top,
 .wrap-archi3 .inner {
   width: 100%;
@@ -155,8 +176,32 @@
   background: #fff;
 }
 
+.wrap-archi3 .sq-tab {
+  position: absolute;
+}
+
+.wrap-archi3 .sq-tab a {
+  width: 130px;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  border: 1px solid white;
+}
+
+@media screen and (min-width: 1025px) {
+  .wrap-archi3 .sq-tab a:hover {
+    background: #fff;
+    color: #000;
+  }
+}
+
+.wrap-archi3 .sq-tab .active {
+  background: #fff;
+  color: #000;
+}
+
 .floorplan {
-  width: 1000px;
+  width: 1200px;
   margin: auto;
 }
 
@@ -187,6 +232,7 @@
   height: 350px;
   background: rgba(255, 255, 255, .84);
   position: relative;
+  margin-bottom: 50px;
 }
 
 .des .desBox {

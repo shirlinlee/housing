@@ -14,7 +14,7 @@ export default {
   mutations: {
     // 主選單點擊, 次選單也要重新顯示第一個
     nav(state, num) {
-      console.log(state.show, num,'store');
+      // console.log(state.show, num,'store');
       if( state.show === num ) return;
       state.show = num;
       state[`c${num}_tab`] = '1'; 

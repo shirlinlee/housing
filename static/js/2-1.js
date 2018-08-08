@@ -1,4 +1,6 @@
 (function (cjs, an) {
+	console.log('cjs2-1', cjs);
+	console.log('an2-1', an);
 	
 	var p; // shortcut to reference prototypes
 	var lib={};var ss={};var img={};

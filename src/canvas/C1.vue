@@ -34,7 +34,7 @@
       return {
         current:0,
         slides:[
-          { name:'牆開口腳偶補強', srcName:'6-1-1.png', text:'<div class="txt por"><h2 class="tt-page">無微不至的細節<br>就是對居住最好的承諾</h2><span class="abs">about<br>engrg</span></div><div class="engrg-des"><h3>牆開囗角隅補強</h3><p class="main-p">外牆上開口(門、窗)角隅設置補強筋，減少剪力裂痕。</p></div>'},
+          { name:'牆開口腳隅補強', srcName:'6-1-1.png', text:'<div class="txt por"><h2 class="tt-page">無微不至的細節<br>就是對居住最好的承諾</h2><span class="abs">about<br>engrg</span></div><div class="engrg-des"><h3>牆開囗角隅補強</h3><p class="main-p">外牆上開口(門、窗)角隅設置補強筋，減少剪力裂痕。</p></div>'},
           { name:'雙層配筋', srcName:'6-1-2.png', text:'<div class="engrg-des"><h3>雙層配筋</h3><p class="main-p dot">外牆15公分</p><p class="main-p dot">符合國家標準CNS560要求，具有無輻射性污染證明</p></div>'}
         ],
         el:'c1_1'

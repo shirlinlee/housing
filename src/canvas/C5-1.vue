@@ -11,7 +11,8 @@
         canvas: null,
         stage: null, 
         exportRoot: null, 
-        fnStartAnimation: null,         
+        fnStartAnimation: null,  
+        loader: null,       
         laoded: false
       }
 
@@ -35,8 +36,16 @@
         }, 10);
       })
     },
-    destroyed() {
+    beforeDestroy() {
         document.getElementsByTagName('head')[0].removeChild(this.scriptTag);
+        AdobeAn = undefined; 
+        window.onresize = null;       
+        this.stage.removeAllChildren();       
+        this.stage.removeAllEventListeners();       
+        this.stage.enableDOMEvents(false);       
+        this.stage.canvas = null;       
+        this.stage._eventListeners = null;       
+        this.loader = null;
     },
     computed: {
       canvasId: function(){
@@ -49,11 +58,11 @@
           this.canvas = document.getElementById(`canvas${this.name}`);
           var comp=AdobeAn.getComposition("0C5B678E7B09774BB36CFD30BBDF5F52");
           var lib=comp.getLibrary();
-          var loader = new createjs.LoadQueue(true);
-          loader.addEventListener("fileload", function(evt){ $this.handleFileLoad(evt,comp)});
-          loader.addEventListener("complete", function(evt){ $this.handleComplete(evt,comp)});
+          this.loader = new createjs.LoadQueue(true);
+          this.loader.addEventListener("fileload", function(evt){ $this.handleFileLoad(evt,comp)});
+          this.loader.addEventListener("complete", function(evt){ $this.handleComplete(evt,comp)});
           var lib=comp.getLibrary();
-          loader.loadManifest(lib.properties.manifest);
+          this.loader.loadManifest(lib.properties.manifest);
       },
       handleFileLoad: function(evt,comp){
           var images=comp.getImages();	

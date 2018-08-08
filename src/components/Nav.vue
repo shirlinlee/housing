@@ -1,6 +1,6 @@
 <template>
   <header :class="{'header-w': $store.state.isBlackTheme}">
-      <a class="logo" href="javascript:;" @click="changeContent(getIndex(-1))"> 
+      <a class="logo" href="javascript:;" @click="changeContent(getIndex(-1))" v-if="$store.state.show!=='0'"> 
         <img src="/static/asset/svg/logo-b.svg" alt="logo" v-if="!$store.state.isBlackTheme">
         <img src="/static/asset/svg/logo-w.svg" alt="logo" v-else>
       </a>
@@ -95,7 +95,7 @@
       .sub li {
         height: 0; 
         opacity:0; 
-        transition: height .4s;
+        transition: all .4s;
         
       }
       &.open {

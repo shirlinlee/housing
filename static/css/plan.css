@@ -1,4 +1,4 @@
-.floor-tab a {
+.roomplan, .floor-tab a {
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
@@ -59,6 +59,11 @@
   padding-top: 120px;
 }
 
+.wrap-plan2 main a:last-child img {
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+}
+
 .room115 {
   width: 750px;
 }
@@ -69,6 +74,18 @@
 
 .roomplan {
   margin: auto;
+  display: block;
+}
+
+@media screen and (min-width: 1025px) {
+  .roomplan:hover {
+    opacity: 0.5;
+  }
+}
+
+.roomplan img {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .floor {
