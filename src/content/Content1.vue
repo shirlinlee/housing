@@ -1,12 +1,12 @@
 <template>
-  <div class="wrap"><span class="page">about concept</span>
+  <div class="wrap"><span class="page">about brand</span>
       <!--box1-->
       <section class="box1">
         <div class="content">
           <div class="pic"><img src="/static/img/1-1.jpg"/>
           </div>
           <div class="txt main-txt por">
-            <h2 class="tt-page">想的 不只是好日子</h2><span class="abs">about<br/>concept</span>
+            <h2 class="tt-page">想的 不只是好日子</h2><span class="abs">about<br/>brand</span>
             <p class="main-p">過著好日子，卻不想只是好日子<br>馬友友、瑪莎葛蘭姆、巴哈、韓德爾⋯⋯<br>聆賞音樂的日常，思緒隨著提琴手飛揚<br>為了沐浴在午後仁愛路林蔭大道的綠色光影下<br>情願放慢腳步<br>你主宰時間，也享受每刻時節</p>
             <p class="main-p">不聲張 並非不響<br>看過太多風景，聽過太多聲音<br>歷練過後更顯沈靜<br>不張揚、不落俗、不浮誇<br>縱然城市喧擾，步調依然自如<br>用生活抒情奏出一齣齣名為日常的曲目<br><strong>過好日子，更要好好過日子</strong></p>
           </div>

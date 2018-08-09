@@ -204,14 +204,14 @@ h6 {
 
 @font-face {
   font-family: "NotoS";
-  src: local(NotoSerifCJKtc-Bold), url(/static/fonts/NotoSerifCJKtc-Bold.otf) format("opentype");
+  src: local(NotoSerifCJKtc-Bold), url(../fonts/NotoSerifCJKtc-Bold.otf) format("opentype");
   font-style: normal;
   font-weight: 700; }
 
 @font-face {
   font-family: "NotoS";
   font-weight: 700;
-  src: local(NotoSerifCJKtc-Medium), url(/static/fonts/NotoSerifCJKtc-Medium.otf) format("opentype");
+  src: local(NotoSerifCJKtc-Medium), url(../fonts/NotoSerifCJKtc-Medium.otf) format("opentype");
   font-style: normal;
   font-weight: 600; }
 

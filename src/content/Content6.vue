@@ -79,7 +79,7 @@
           {name:'13F', uniClass:'floor_rotate', srcName:'floor-13F.jpg'},
           {name:'14F', uniClass:'floor_rotate', srcName:'floor-14F.jpg'},
           {name:'R1F', uniClass:'floor_rotate', srcName:'floor-R1F.jpg'},
-          {name:'R2-3F', uniClass:'last', srcName:'floor-R2.jpg'}
+          {name:'R2-3F', uniClass:'last', srcName:'floor-R2F.jpg'}
         ]
       }
   

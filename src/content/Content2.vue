@@ -20,30 +20,30 @@
           <h2 class="tt-page">城中實績</h2>
           <div class="content">
             <div class="box">
-              <a class="cc1-1" href="javascript:;" @click="openLb('cc1-1.jpg', true,'' )"></a>
-              <a class="cc1-2" href="javascript:;" @click="openLb('cc1-2.jpg', true,'' )"></a>
+              <a class="cc1-1" href="javascript:;" @click="openLb('cc1-1-l.jpg', true,'' )"></a>
+              <a class="cc1-2" href="javascript:;" @click="openLb('cc1-2-l.jpg', true,'' )"></a>
               <p> <span>2005 青田懷石 / 2006 青田階 </span></p>
             </div>
             <div class="box">
-              <a class="cc2"  href="javascript:;" @click="openLb('cc2.jpg', true,'' )"></a>
+              <a class="cc2"  href="javascript:;" @click="openLb('cc2-l.jpg', true,'' )"></a>
               <p> <span>2007 新語堂</span></p>
             </div>
             <div class="box">
-              <a class="cc3-1"  href="javascript:;" @click="openLb('cc3-1.jpg', true,'' )"></a>
-              <a class="cc3-2"  href="javascript:;" @click="openLb('cc3-2.jpg', true,'' )"></a>
+              <a class="cc3-1"  href="javascript:;" @click="openLb('cc3-1-l.jpg', true,'' )"></a>
+              <a class="cc3-2"  href="javascript:;" @click="openLb('cc3-2-l.jpg', true,'' )"></a>
               <p> <span>2008 青田若隱 / 2011 有余</span></p>
             </div>
             <div class="box">
-              <a class="cc4"  href="javascript:;" @click="openLb('cc4.jpg', true,'' )"></a>
+              <a class="cc4"  href="javascript:;" @click="openLb('cc4-l.jpg', true,'' )"></a>
               <p> <span>2012 城品</span></p>
             </div>
             <div class="box">
-              <a class="cc5"  href="javascript:;" @click="openLb('cc5.jpg', true,'' )"> </a>
+              <a class="cc5"  href="javascript:;" @click="openLb('cc5-l.jpg', true,'' )"> </a>
               <p> <span>2014 閱狷聲</span></p>
             </div>
             <div class="box">
-              <a class="cc6-1"  href="javascript:;" @click="openLb('cc6-1.jpg', true,'' )"></a>
-              <a class="cc6-2"  href="javascript:;" @click="openLb('cc6-2.jpg', true,'' )"></a>
+              <a class="cc6-1"  href="javascript:;" @click="openLb('cc6-1-l.jpg', true,'' )"></a>
+              <a class="cc6-2"  href="javascript:;" @click="openLb('cc6-2-l.jpg', true,'' )"></a>
               <p> <span>2016 愛吾家 / 2018 愛吾家二期</span></p>
             </div>
           </div>

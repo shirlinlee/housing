@@ -24,7 +24,7 @@
         <main class="mapBG mapBG-3-2"></main>
       </div>
       <div class="wrap wrap-archi3" :key="'tab3'" v-if="$store.state.c3_tab === showItem(2)">
-        <span class="page">about archi</span>
+        <span class="page" :class="{'white': isWhite }">about archi</span>
         <main>
           <div class="top">
             <div class="floorplan"><img src="/static/img/3-3-main.jpg"/>
@@ -48,7 +48,7 @@
                   </div>
                   <div class="desBox" v-if="i==8">
                     <h2>{{ picBox.title }}</h2>
-                    <p v-for="txt in picBox.des">{{ txt }}</p>
+                    <p v-for="(txt,index) in picBox.des"  v-html="txt"/>
                     
                   </div>
                 </div>
@@ -84,6 +84,7 @@
         current2: 0,
         indicateLeft: 0,
         blackThreshold: 0,
+        isWhite: false,
         slides: [{
             name: '建築設計理念',
             class: '',
@@ -112,7 +113,16 @@
           {name:'韻動健身房',title:'韻動健身房 Rock & Roll', des:'健身除了身體健康，還有著讓人上癮的魅力。以專業健身器材保持輕盈體態的同時，增加血液的載氧量，越動越年輕，還能活化大腦細胞，享受一場又一場愉悅的腦內啡旋風。',title2:'青鳥瑜珈室 Body & Soul', des2:'瑜珈讓你傾聽身體的聲音，伸展緊繃的肌肉伸，意識與四肢同時放鬆，靈魂與身體有了彈性延展。調息冥想中，憂煩與僵硬都歸於寧靜，傾聽身體的聲音，找回人神合一的平衡。'},
           {name:'空中閣樓',title:'空中閣樓 Attic', des:'無論晴雨，閱狷聲的空中廚房都為歡聚敞開。在空中廚房與家人好友共同完成料理。舉辦多人饗宴時，上樓便是另一室延伸餐廳，與知己好友品茗美好的四季光景。'},
           {name:'空中宴會',title:'花間空中宴會區 Banquet', des:'行雲流水的空間饗宴，彷彿接受大樹的邀約，與知己好友宴飲，席間共享天光雲影，花間品茗酒酣茶香皆宜人。'},
-          {name:'停車場',title:'停車場 Parking', des: ['精品規格打造閱狷聲的所有細節，選用安全堅實的捲門，從車道入口便感受快速與安靜，給予每位重視品質的住戶尊榮待遇。細節中醞釀藝術，動態警示燈採用水流線條，讓色彩斑斕的波光在牆上流動，停車也是件浪漫的事。','-ETC車輛管控系統','有車上ETC核對進出車輛，住戶無需再在拿遙控器控制','-大樓通訊','停車場、電梯均有行動電話收訊以確保住戶方便及安全','-德國EFAFLEX飛梭門','不只是追求快速，安全更是核心價值以安全、快速、耐用聞名全球，號稱全世界最快的電動捲門，一秒可達4.5公尺，也是全球第一間致力研發「安全快速門」的門業大廠，至今42年已締造無數專利與創新。']}
+          {name:'停車場',title:'停車場 Parking', des: [
+              '精品規格打造閱狷聲的所有細節，選用安全堅實的捲門，從車道入口便感受快速與安靜，給予每位重視品質的住戶尊榮待遇。細節中醞釀藝術，動態警示燈採用水流線條，讓色彩斑斕的波光在牆上流動，停車也是件浪漫的事。',
+              '<strong>-ETC 車輛管控系統	</strong>',
+              '有車上ETC核對進出車輛，住戶無需再在拿遙控器控制',
+              '<strong>-大樓通訊	</strong>',
+              '停車場、電梯均有行動電話收訊以確保住戶方便及安全',
+              '<div class="parking-logo"><img src="/static/img/parking-logo.png"/></div>',
+              '<strong>-德國 EFAFLEX 飛梭門</strong>',
+              '不只是追求快速，安全更是核心價值以安全、快速、耐用聞名全球，號稱全世界最快的電動捲門，一秒可達4.5公尺，也是全球第一間致力研發「安全快速門」的門業大廠，至今42年已締造無數專利與創新。'
+            ]}
           
         ]
       }
@@ -137,7 +147,7 @@
       },
       arrowHandler: function(sub, add){
         var newVal = this['current'+sub]+add;
-        if( newVal<0 ) newVal= this.picBoxs.length-1;
+        if( newVal<0 ) newVal= this.picBoxs.length - 1;
         if( newVal >= this.picBoxs.length ) newVal = 0;
         this['current'+sub] = newVal;
       },
@@ -154,7 +164,7 @@
         var val = $(this.$refs.archi3Inner).offset().top - 80;
         this.blackThreshold = val;
         // console.log(this.blackThreshold);
-      }
+      },
     },
     mounted() {
       this.$nextTick( ()=> {
@@ -166,17 +176,21 @@
 
         var isScroll = false;
         var $this = this;
-        $(window).on('scroll',function(e){
-          
+        $(window).on('scroll',(e)=> {
           if($this.$store.state.c3_tab === "3") {
               var scroll = Number($(window).scrollTop());
               if( scroll >= $this.blackThreshold ) {
                 $this.$store.commit('themeHandler', true);
+                $this.isWhite = true;
               } else {
                 $this.$store.commit('themeHandler', false);
+                $this.isWhite = false;
+                
               }
           } else {
-             $this.$store.commit('themeHandler', false);
+            $this.$store.commit('themeHandler', false);
+            $this.isWhite = false;
+             
           }
         });
         
@@ -185,10 +199,10 @@
         })
       })
     },
-    destroyed() {
-        document.getElementsByTagName('head')[0].removeChild(this.styleTag);
-        $(window).off('scroll');
-    },
+    beforeDestroy() {
+      document.getElementsByTagName('head')[0].removeChild(this.styleTag);
+      $(window).off('scroll resize');
+    }
   }
 </script>
 <style>

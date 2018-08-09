@@ -255,39 +255,48 @@
 }
 
 .pic1 {
-  background: url(../img/archi1.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi1.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi1.jpg) no-repeat center;
 }
 
 .pic2 {
-  background: url(../img/archi2.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi2.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi2.jpg) no-repeat center;
 }
 
 .pic3 {
-  background: url(../img/archi3.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi3.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi3.jpg) no-repeat center;
 }
 
 .pic4 {
-  background: url(../img/archi4.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi4.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi4.jpg) no-repeat center;
 }
 
 .pic5 {
-  background: url(../img/archi5.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi5.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi5.jpg) no-repeat center;
 }
 
 .pic6 {
-  background: url(../img/archi6.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi6.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi6.jpg) no-repeat center;
 }
 
 .pic7 {
-  background: url(../img/archi8.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi8.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi8.jpg) no-repeat center;
 }
 
 .pic8 {
-  background: url(../img/archi9.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi9.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi9.jpg) no-repeat center;
 }
 
 .pic9 {
-  background: url(../img/archi10.jpg) no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi10.jpg) no-repeat center;
+  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi10.jpg) no-repeat center;
 }
 
 .pic9 .des {

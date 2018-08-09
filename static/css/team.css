@@ -412,7 +412,7 @@
 }
 
 .cc1-1 {
-  background: url(../img/cc1-1.jpg) center/cover;
+  background: url(../img/cc1-1-l.jpg) center/cover;
 }
 
 .cc1-2 {
@@ -420,31 +420,31 @@
 }
 
 .cc2 {
-  background: url(../img/cc2.jpg) center/cover;
+  background: url(../img/cc2-l.jpg) 30% 30%/cover;
 }
 
 .cc3-1 {
-  background: url(../img/cc3-1.jpg) center/cover;
+  background: url(../img/cc3-1-l.jpg) center/cover;
 }
 
 .cc3-2 {
-  background: url(../img/cc3-2.jpg) center/cover;
+  background: url(../img/cc3-2-l.jpg) center/cover;
 }
 
 .cc4 {
-  background: url(../img/cc4.jpg) center/cover;
+  background: url(../img/cc4-l.jpg) center left/cover;
 }
 
 .cc5 {
-  background: url(../img/cc5.jpg) center/cover;
+  background: url(../img/cc5-l.jpg) center/cover;
 }
 
 .cc6-1 {
-  background: url(../img/cc6-1.jpg) center/cover;
+  background: url(../img/cc6-1-l.jpg) center/cover;
 }
 
 .cc6-2 {
-  background: url(../img/cc6-2.jpg) center/cover;
+  background: url(../img/cc6-2-l.jpg) center top/cover;
 }
 
 /*# sourceMappingURL=team.css.map */

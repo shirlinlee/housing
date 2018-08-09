@@ -74,6 +74,9 @@ canvas.fadeIn {
     top: 0;
 }
 
+.wrap .page.white {
+    color: #fff;
+}
 
 
 .wrap a.transparent {
