@@ -22,7 +22,7 @@
           <div class="content">
             <div class="txt">
               <h2 class="tt-page">品讀 閱狷聲</h2>
-              <p> <span><span>「<strong>閱</strong>」- </span><span>腹有詩書氣自華，人文氣質構築天地</span></span><span><span>「<strong>狷</strong>」- </span><span>取自論語「狂者進取，狷者有所不為也」，堅持自我，是城中對土地的堅持</span></span><span><span>「<strong>聲</strong>」-</span><span>兩廳院音樂之聲，是藝術，更是被藝術包圍的美好生活時刻</span></span></p>
+              <p class="main-p"> <span><span>「<strong>閱</strong>」- </span><span>腹有詩書氣自華，人文氣質構築天地</span></span><span><span>「<strong>狷</strong>」- </span><span>取自論語「狂者進取，狷者有所不為也」，堅持自我，是城中對土地的堅持</span></span><span><span>「<strong>聲</strong>」-</span><span>兩廳院音樂之聲，是藝術，更是被藝術包圍的美好生活時刻</span></span></p>
               <p class="main-p">經歷風風雨雨，更渴求細水長流<br>在閱狷聲，感受靈魂慢下來的舒張<br>散步10分鐘，到兩廳院聽韓德爾<br>尋東門市場，四十年念念不忘米粉湯<br>繞進永康街喝口茶，<br>齊東街靜謐的樹與陽光下，咖啡更香<br>閱讀 賞樂 享受生活<br>把每個日子養得有滋有味<br>每個好日子 都值得好好過</p>
             </div>
             <div class="pic"><img class="none-m" src="/static/img/1-2.png"/><img class="none-pc" src="/static/img/1-2-m.png"/>
