@@ -2,18 +2,25 @@
   <div>
     <transition-group name="fade">
       <div class="wrap wrap-team1" :key="'tab1'" v-if="$store.state.c2_tab === showItem(0)">
-          <span class="page">about team</span>
-          <main>
-            <div class="topBox">
-              <div class="pic"><img class="none-pc" src="/static/img/2-1-m.png"/>
-              </div>
-              <div class="txt">
-                <h2 class="tt-page">城中建築團隊理念 </h2><span class="abs">about<br/>team</span>
-              </div>
+        <span class="page">about team</span>
+        <main>
+          <div class="topBox">
+            <div class="pic"><img class="none-pc" src="/static/img/2-1-m.png"/>
             </div>
-            <p> <span>民國 86 年，胡董事長散步經過杭州南路的靜巷，看見 50 幾坪的小土地。</span><span>像一塊安靜內斂的璞玉，讓他一眼相中，這便是閱狷聲的起點。              </span><span>之後，便是 17 年的雕琢。</span><span>從整合土地到落成，城中建築團隊在理性與感性之間經歷無數磨合，</span><span>從外觀美學、空間章節到氣質細節反覆琢治，</span><span>終於成就一顆在中正區綻放的耀眼。</span><span>建築如玉，生活亦如玉，除了本質要對，</span><span>更要用心刻畫，方能讓日子溫潤清和，怡然自樂。</span><span>閱狷聲，獻給每一個好好過日子的你。</span></p>
-          </main>
+            <div class="txt">
+              <h2 class="tt-page">城中建築團隊理念 </h2><span class="abs">about<br/>team</span>
+            </div>
+          </div>
+          <div class="videoBox por">
+            <div class="icon"><img src="/static/asset/svg/video.svg"/>
+            </div>
+            <div class="video por"><img src="/static/img/video.jpg"/>
+            </div>
+          </div>
+          <p class="main-p"> <span>民國 86 年，胡董事長散步經過杭州南路的靜巷，看見 50 幾坪的小土地。</span><span>像一塊安靜內斂的璞玉，讓他一眼相中，這便是閱狷聲的起點。              </span><span>之後，便是 17 年的雕琢。</span><span>從整合土地到落成，城中建築團隊在理性與感性之間經歷無數磨合，</span><span>從外觀美學、空間章節到氣質細節反覆琢治，</span><span>終於成就一顆在中正區綻放的耀眼。</span><span>建築如玉，生活亦如玉，除了本質要對，</span><span>更要用心刻畫，方能讓日子溫潤清和，怡然自樂。</span><span>閱狷聲，獻給每一個好好過日子的你。</span></p>
+        </main>
       </div>
+  
       <div class="wrap wrap-team2" :key="'tab2'" v-if="$store.state.c2_tab === showItem(1)">
         <span class="page">about team</span>
         <main>
@@ -46,6 +53,7 @@
               <a class="cc6-2"  href="javascript:;" @click="openLb('cc6-2-l.jpg', true,'' )"></a>
               <p> <span>2016 愛吾家 / 2018 愛吾家二期</span></p>
             </div>
+            <p class="last abs">2019 松智路案<span></span></p>
           </div>
         </main>
       </div>
@@ -188,21 +196,22 @@
         this.el = el;
       }
     },
-    mounted() {
-      this.$nextTick( ()=> {
-        this.styleTag=document.createElement("link")
-        this.styleTag.setAttribute("rel", "stylesheet")
-        this.styleTag.setAttribute("type", "text/css")
-        this.styleTag.setAttribute("href", '/static/css/team.css')
-        document.getElementsByTagName("head")[0].appendChild(this.styleTag)
-      })
-    },
-    destroyed() {
-        document.getElementsByTagName('head')[0].removeChild(this.styleTag);
-    },
+    // mounted() {
+    //   this.$nextTick( ()=> {
+    //     this.styleTag=document.createElement("link")
+    //     this.styleTag.setAttribute("rel", "stylesheet")
+    //     this.styleTag.setAttribute("type", "text/css")
+    //     this.styleTag.setAttribute("href", '/static/css/team.css')
+    //     document.getElementsByTagName("head")[0].appendChild(this.styleTag)
+    //   })
+    // },
+    // destroyed() {
+    //     document.getElementsByTagName('head')[0].removeChild(this.styleTag);
+    // },
   }
 </script>
-<style>
+<style scoped>
+  @import '~/static/css/team.css';
   .indicator{
      transition: left .5s;
   }

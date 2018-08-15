@@ -8,6 +8,7 @@
             </a>
           </transition>
           <div class="sq-tab">
+            <p class="ps">此室內格局設計均僅供客戶參考，本建物實際交屋平面圖及施工建材設備說明，均以雙方簽訂之書面買賣契約書暨其附件所列之約定及條款為依據。</p>
             <ul>
               <li v-for="(inner, index, key) in inners" :key="index"><a :class="{'active':currentData(0,index)}" @click="currentHandler(0, index)">{{ inner.name }}</a></li>
             </ul>
@@ -119,7 +120,6 @@
         this.lbShow = isShow;
         this.el = el;
       }
-      
     },
     mounted() {
       this.$nextTick( ()=> {
@@ -128,8 +128,6 @@
         this.styleTag.setAttribute("type", "text/css")
         this.styleTag.setAttribute("href", '/static/css/plan.css')
         document.getElementsByTagName("head")[0].appendChild(this.styleTag)
-
-        
       })
     },
     destroyed() {

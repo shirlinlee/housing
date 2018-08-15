@@ -21,61 +21,75 @@
       </div>
       <div class="wrap wrap-archi2" :key="'tab2'" v-if="$store.state.c3_tab === showItem(1)">
         <span class="page">about archi</span>
-        <main class="mapBG mapBG-3-2"></main>
+        <main>
+          <div class="content por">
+            <div class="buildingBox">
+              <div class="box">
+                <transition-group name="fade">
+                  <div v-for="(building,index) in buildings" :key="'b'+building" :class="'building'+building" v-if="buildingShow(index)"></div>
+                </transition-group>
+              </div>
+              
+              <div class="arrowBox">
+                <div class="arrow">
+                    <a href="javascript:;" @click="arrowHandler(1,-1, 'building')" :class="{'transparent': current1===0 }"><span></span></a>
+                    <a href="javascript:;" @click="arrowHandler(1,1, 'building')" :class="{'transparent': current1===(buildings.length/2-1) }"><span></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="txt">
+            <h2 class="tt-page">用建築奏生活的樂章</h2>
+            <p class="main-p">立體幾何線條語彙的串連，讓閱狷聲的外觀奏出行雲流水般的樂章，曲線的緩衝，盡可能在每個環節保持光、風、音樂與空氣的流動</p>
+            <p class="main-p"> <strong>- 立面石材</strong></p>
+            <p class="main-p">採用背擴孔工法並採用德國 Fischer 固定件，確保石材穩固。無矽利康空縫處理不會造成石材污染</p>
+            <p class="main-p"> <strong>- 結構體防水</strong></p>
+            <p class="main-p">全棟大樓立面石材後方均有防水塗層  </p>
+          </div>
+          <div class="bg abs"><img src="/static/img/bg-3-2.png"/>
+          </div>
+        </main>
       </div>
       <div class="wrap wrap-archi3" :key="'tab3'" v-if="$store.state.c3_tab === showItem(2)">
         <span class="page" :class="{'white': isWhite }">about archi</span>
         <main>
-          <div class="top">
-            <div class="floorplan"><img src="/static/img/3-3-main.jpg"/>
-            </div>
-            <div class="scroll abs"><span>scroll</span><span class="triangle"></span><span class="triangle"></span></div>
-          </div>
-          <div class="inner" ref="archi3Inner">
-            <transition name="landscape">
-              <div v-for="(picBox, i, key) in picBoxs" class="picBox" :key="'key'+i" :class="'pic'+(i+1)" v-if="currentData(2,i)">
-              
-                <div class="des">
-                  <div class="desBox" v-if="detectItem(i)">
-                      <h2>{{ picBox.title }}</h2>
-                      <p>{{ picBox.des}}</p>
-                  </div>
-                  <div class="desBox" v-if="i==5">
-                      <h2>{{ picBox.title }}</h2>
-                      <p>{{ picBox.des }}</p>
-                      <h2>{{ picBox.title2 }}</h2>
-                      <p>{{ picBox.des2 }}</p>
-                  </div>
-                  <div class="desBox" v-if="i==8">
-                    <h2>{{ picBox.title }}</h2>
-                    <p v-for="(txt,index) in picBox.des"  v-html="txt"/>
-                    
-                  </div>
+          <div class="top por">
+            <div class="floorplan">
+              <h2 class="tt-page">喜歡讀詩<span>更要活得像首詩</span></h2>
+
+              <div class="mapBox por" v-for="(public,index,key) in publics" v-if="current2 === index">
+                <img :src="'/static/img/'+public.srcName"/>
+                <a v-for="(href,i) in public.href" class="abs" :class="href.class" @click="openLb('', true, href.lb)" @mouseenter="mouseEnter(href.order-1)" @mouseleave="mouseLeave" href="javascript:;"></a>
+                <div class="mapSub">
+                  <ul>
+                    <li v-for="(ls,i) in public.list" :class="{'focus':focus === i }" @mouseenter="mouseEnter(i)" @mouseleave="mouseLeave" @click="openLb('', true, ls.lb)"><span class="num">{{i+1}}</span><span class="sub">{{ls.name}}</span></li>
+                  </ul>
                 </div>
               </div>
-            </transition>
-            
+            </div>
+            <div class="floor-tab">
+              <ul>
+                <li v-for="(public,index,key) in publics"><a href="javascript:;" :class="{'active':currentData(2,index)}" @click="currentHandler(2, index)">{{public.name}}</a></li>
+              </ul>
+            </div>
             <div class="arrowBox">
               <div class="arrow">
-                <a href="javascript:;" @click="arrowHandler(2,-1)" :class="{'transparent': current2===0 }" ><span></span></a>
-                <a href="javascript:;" @click="arrowHandler(2,1)" :class="{'transparent': current2===(picBoxs.length-1) }"><span></span></a>
+                  <a href="javascript:;" @click="arrowHandler(2,-1, 'public')" :class="{'transparent': current2 === 0 }"><span></span></a>
+                  <a href="javascript:;" @click="arrowHandler(2,1, 'public')" :class="{'transparent': current2 === (publics.length-1) }"><span></span></a>
               </div>
-            </div>
-            <div class="sq-tab">
-              <ul>
-                <li v-for="(item,index,key) in picBoxs"><a href="javascript:;" :class="{'active':currentData(2,index)}" @click="currentHandler(2, index)">{{item.name}}</a></li>
-                <!-- <div class="indicator" :style="{'left': indicateHandler+'px'}"/> -->
-              </ul>
             </div>
           </div>
         </main>
       </div>
-
     </transition-group>
+    <LBP :picName="lbPic" v-if="lbShow" @openLb="openLb" :el="el" />
+
   </div>
 </template>
 
 <script>
+  import LBP from './../components/LightBox_public'
+
   export default {
     data() {
       return {
@@ -85,45 +99,60 @@
         indicateLeft: 0,
         blackThreshold: 0,
         isWhite: false,
-        slides: [{
-            name: '建築設計理念',
-            class: '',
-            tabs: [],
-            imgs:['115.png']
-          },
-          {
-            name: '立面篇',
-            class: '',
-            tabs: [],
-            imgs:['b2.png']
-          },
-          {
-            name: '公設篇',
-            class: '',
-            tabs: [],
-            imgs:['b2.png']
-          }
+        focus: null,
+        lbPic:'',
+        lbShow: false,
+        el: null,
+        buildings:[
+            '1','2','3','4','5','6','7','8','9','10'
         ],
-        picBoxs:[
-          {name:'雅敘序曲',title:'雅敘序曲 Prelude', des:'社區入囗簡約舒泰的氣度，藉由木材樸實的個性，溫潤心情上的雜慮，閱狷聲的主人每日進出，朗闊的植栽景觀，一回家就開始儲備能量。'},
-          {name:'朗朗門廳',title:'朗朗門廳 Lobby', des:'空間的第一樂章，挑高的氣度、留白的含蓄。在雅緻色溫、錯落層次虛實交錯間，開展深邃與層次，表現生活優悅內涵。'},
-          {name:'涵樂',title:'涵樂 SOFA', des:'恬靜安詳的接待區，溫暖木質風格，猶如安定人心的木管樂器，可以純候客，亦可休憩獨處。讓人放鬆心情，轉換步調。'},
-          {name:'蒙田藝文',title:'蒙田藝文 Salon', des:'大面落地玻璃，向自然界借景，交織出綠意通透的開闊感。結合休憩、社交、藝文、閱讀複合功能，無論朋友或家人小聚，展露全方位的會所功能。'},
-          {name:'空中廚房',title:'晴仰空中廚房 Gourmet', des:'讓聚餐不只是聚餐，閱狷聲規劃空中廚房與戶外宴會廳動線相連，中島吧台設計明亮的烹調空間。嘴中品味紅酒香氣，眼裡盡賞城市夜景。微風、音樂與歡聲笑語，交織出感官的華麗饗宴。'},
-          {name:'韻動健身房',title:'韻動健身房 Rock & Roll', des:'健身除了身體健康，還有著讓人上癮的魅力。以專業健身器材保持輕盈體態的同時，增加血液的載氧量，越動越年輕，還能活化大腦細胞，享受一場又一場愉悅的腦內啡旋風。',title2:'青鳥瑜珈室 Body & Soul', des2:'瑜珈讓你傾聽身體的聲音，伸展緊繃的肌肉伸，意識與四肢同時放鬆，靈魂與身體有了彈性延展。調息冥想中，憂煩與僵硬都歸於寧靜，傾聽身體的聲音，找回人神合一的平衡。'},
-          {name:'空中閣樓',title:'空中閣樓 Attic', des:'無論晴雨，閱狷聲的空中廚房都為歡聚敞開。在空中廚房與家人好友共同完成料理。舉辦多人饗宴時，上樓便是另一室延伸餐廳，與知己好友品茗美好的四季光景。'},
-          {name:'空中宴會',title:'花間空中宴會區 Banquet', des:'行雲流水的空間饗宴，彷彿接受大樹的邀約，與知己好友宴飲，席間共享天光雲影，花間品茗酒酣茶香皆宜人。'},
-          {name:'停車場',title:'停車場 Parking', des: [
-              '精品規格打造閱狷聲的所有細節，選用安全堅實的捲門，從車道入口便感受快速與安靜，給予每位重視品質的住戶尊榮待遇。細節中醞釀藝術，動態警示燈採用水流線條，讓色彩斑斕的波光在牆上流動，停車也是件浪漫的事。',
-              '<strong>-ETC 車輛管控系統	</strong>',
-              '有車上ETC核對進出車輛，住戶無需再在拿遙控器控制',
-              '<strong>-大樓通訊	</strong>',
-              '停車場、電梯均有行動電話收訊以確保住戶方便及安全',
-              '<div class="parking-logo"><img src="/static/img/parking-logo.png"/></div>',
-              '<strong>-德國 EFAFLEX 飛梭門</strong>',
-              '不只是追求快速，安全更是核心價值以安全、快速、耐用聞名全球，號稱全世界最快的電動捲門，一秒可達4.5公尺，也是全球第一間致力研發「安全快速門」的門業大廠，至今42年已締造無數專利與創新。'
-            ]}
-          
+        publics:[
+          { name: '1F',srcName:'3-3-map.png',
+            href:[
+              {class:'map-1f-1',order:1, lb:1},
+              {class:'map-1f-4',order:4, lb:2},
+              {class:'map-1f-5',order:5, lb:3},
+              {class:'map-1f-6',order:6, lb:4}
+            ],
+            list:[
+              { name: '雅敘序曲 Prelude',lb:1 },
+              { name: '暮光迎賓 Intro',lb:null },
+              { name: '樹下閱讀 Notation',lb:null },
+              { name: '朗朗門廳 Lobby',lb:2 },
+              { name: '涵樂 SOFA',lb:3 },
+              { name: '蒙田藝文 Salon',lb:4 },
+              { name: '藝術廊摘 Art',lb:null }
+            ]
+          },
+          { name: 'B2F',srcName:'3-3-map-2.png',
+            href:[
+              {class:'map-b2f-4',order:4, lb:6},
+              {class:'map-b2f-5',order:5, lb:6}
+            ],
+            list:[
+              { name: '回留第二門廳  Intermission',lb:null },
+              { name: '兩情相悅區 Chart',lb:null },
+              { name: '氛圍休憩區 Relax',lb:null },
+              { name: '韻動健身房 Rock&Roll',lb:6 },
+              { name: '青鳥瑜珈室 Body&Soul',lb:6 }
+            ]
+          },
+          { name: 'R1F',srcName:'3-3-map-3.png',
+            href:[
+              {class:'map-r1f-3',order:3, lb:5},
+              {class:'map-r1f-4',order:4, lb:8},
+              {class:'map-r1f-7',order:7, lb:9}
+            ],
+            list:[
+              { name: '日閒月影臥榻 Ballad',lb:null },
+              { name: 'B.B.Q朗香 Score',lb:null },
+              { name: '晴仰空中廚房 Gourmet',lb:5 },
+              { name: '花間空中宴會區 Banquet',lb:8 },
+              { name: '歡言座椅 Murmur',lb:null },
+              { name: '行雲發呆亭 Zen',lb:null },
+              { name: '藝術廊摘 Art',lb:null } 
+            ]
+          }
         ]
       }
     },
@@ -133,19 +162,40 @@
         return this.current2*60;
       }
     },
+    components: {
+        LBP
+    },
     updated() {
-      if(this.$store.state.c3_tab === "3") this.blackHandler();
+      // if(this.$store.state.c3_tab === "3") this.blackHandler();
     },
     methods: {
+      buildingShow(index) {
+          var show = Math.floor(index/2);
+          return this.current1 === Math.floor(index/2);
+      },
       currentData: function(index,i){
-        return this['current'+index]===i;
+        return this['current'+index] === i;
       },
       currentHandler: function(main, sub) {
         if ( this['current'+main] !== sub) {
           this['current'+main] = sub;
         }
       },
-      arrowHandler: function(sub, add){
+      arrowHandler: function(sub, add, section){
+        if( section === "building") {
+            var newVal = this['current'+sub]+add;
+            if( newVal<0 ) newVal= this.buildings.length - 1;
+            if( newVal >= this.buildings.length ) newVal = 0;
+            this['current'+sub] = newVal;
+            return 
+        }
+        if( section === "public") {
+            var newVal = this['current'+sub]+add;
+            if( newVal<0 ) newVal= this.publics.length - 1;
+            if( newVal >= this.publics.length ) newVal = 0;
+            this['current'+sub] = newVal;
+            return 
+        }
         var newVal = this['current'+sub]+add;
         if( newVal<0 ) newVal= this.picBoxs.length - 1;
         if( newVal >= this.picBoxs.length ) newVal = 0;
@@ -154,17 +204,27 @@
       showItem(index) {
         return (index + 1).toString()
       },
-      detectItem(i) {
-        var show = true;
-        if( i=== 5 || i=== 8 )  show = false;
-        return show
-      },
       blackHandler() {
         // console.log($(this.$refs.archi3Inner));
         var val = $(this.$refs.archi3Inner).offset().top - 80;
         this.blackThreshold = val;
         // console.log(this.blackThreshold);
       },
+      mouseEnter(index) {
+        this.focus = index;
+        // console.log(index);
+      },
+      mouseLeave() {
+        this.focus = null;
+        // console.log('out');
+      },
+      openLb(name, isShow, el) {
+        if(el === null)  return;
+        console.log(name, isShow, el);
+        this.lbPic = name;
+        this.lbShow = isShow;
+        this.el = el;
+      }
     },
     mounted() {
       this.$nextTick( ()=> {
@@ -174,34 +234,34 @@
         this.styleTag.setAttribute("href", '/static/css/archi.css')
         document.getElementsByTagName("head")[0].appendChild(this.styleTag)
 
-        var isScroll = false;
-        var $this = this;
-        $(window).on('scroll',(e)=> {
-          if($this.$store.state.c3_tab === "3") {
-              var scroll = Number($(window).scrollTop());
-              if( scroll >= $this.blackThreshold ) {
-                $this.$store.commit('themeHandler', true);
-                $this.isWhite = true;
-              } else {
-                $this.$store.commit('themeHandler', false);
-                $this.isWhite = false;
+        // var isScroll = false;
+        // var $this = this;
+        // $(window).on('scroll',(e)=> {
+        //   if($this.$store.state.c3_tab === "3") {
+        //       var scroll = Number($(window).scrollTop());
+        //       if( scroll >= $this.blackThreshold ) {
+        //         $this.$store.commit('themeHandler', true);
+        //         $this.isWhite = true;
+        //       } else {
+        //         $this.$store.commit('themeHandler', false);
+        //         $this.isWhite = false;
                 
-              }
-          } else {
-            $this.$store.commit('themeHandler', false);
-            $this.isWhite = false;
+        //       }
+        //   } else {
+        //     $this.$store.commit('themeHandler', false);
+        //     $this.isWhite = false;
              
-          }
-        });
+        //   }
+        // });
         
-        $(window).on('resize',()=>{
-          if(this.$store.state.c3_tab==="3") this.blackHandler();
-        })
+        // $(window).on('resize',()=>{
+        //   if(this.$store.state.c3_tab==="3") this.blackHandler();
+        // })
       })
     },
     beforeDestroy() {
       document.getElementsByTagName('head')[0].removeChild(this.styleTag);
-      $(window).off('scroll resize');
+      // $(window).off('scroll resize');
     }
   }
 </script>
@@ -211,5 +271,15 @@
   }
   .inner {
     background: #000;
+  }
+  .box>span {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
   }
 </style>

@@ -117,6 +117,159 @@
   left: 0;
 }
 
+.wrap-archi2 {
+  padding-right: 185px;
+}
+
+@media screen and (max-width: 1366px) {
+  .wrap-archi2 {
+    padding-right: 160px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrap-archi2 {
+    padding: 0;
+  }
+}
+
+.wrap-archi2 main {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.wrap-archi2 .content {
+  width: 65%;
+}
+
+@media screen and (max-width: 1024px) {
+  .wrap-archi2 .content {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .wrap-archi2 .content {
+    width: 100%;
+  }
+}
+
+.wrap-archi2 .txt {
+  padding: 120px;
+  width: 45%;
+}
+
+@media screen and (max-width: 1024px) {
+  .wrap-archi2 .txt {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .wrap-archi2 .txt {
+    width: 100%;
+    margin: -10vh auto 0;
+    padding: 30px;
+  }
+}
+
+.wrap-archi2 h2 {
+  margin-bottom: 15px;
+}
+
+.wrap-archi2 p {
+  margin: 5px 0;
+}
+
+.wrap-archi2 p:nth-child(3), .wrap-archi2 p:nth-child(5) {
+  margin-top: 20px;
+}
+
+.wrap-archi2 .bg {
+  left: 0;
+  top: -50%;
+  pointer-events: none;
+}
+
+.wrap-archi2 .arrowBox {
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+}
+
+.buildingBox {
+  width: 100%;
+  height: 100vh;
+}
+
+@media screen and (max-width: 960px) {
+  .buildingBox {
+    height: 45vh;
+  }
+}
+
+.buildingBox .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.buildingBox .box > div {
+  width: 50%;
+  height: 100%;
+}
+
+.building1 {
+  background: url(../img/3-2-1.jpg) center/cover;
+}
+
+.building2 {
+  background: url(../img/3-2-2.jpg) center/cover;
+}
+
+.building3 {
+  background: url(../img/3-2-3.jpg) center/cover;
+}
+
+.building4 {
+  background: url(../img/3-2-4.jpg) center/cover;
+}
+
+.building5 {
+  background: url(../img/3-2-5.jpg) center/cover;
+}
+
+.building6 {
+  background: url(../img/3-2-6.jpg) center/cover;
+}
+
+.building7 {
+  background: url(../img/3-2-7.jpg) center/cover;
+}
+
+.building8 {
+  background: url(../img/3-2-8.jpg) center/cover;
+}
+
+.building9 {
+  background: url(../img/3-2-9.jpg) center/cover;
+}
+
+.building10 {
+  background: url(../img/3-2-10.jpg) center/cover;
+}
+
 .wrap-archi3 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -127,8 +280,16 @@
   flex-direction: column;
 }
 
+.wrap-archi3 .arrowBox a {
+  background: rgba(225, 225, 225, .4);
+}
+
 .wrap-archi3 .top {
   padding-right: 185px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 1366px) {
@@ -200,9 +361,48 @@
   color: #000;
 }
 
+.wrap-archi3 .tt-page {
+  font-size: 40px;
+  font-size: 2.5rem;
+}
+
+@media screen and (min-width: 961px) {
+  .wrap-archi3 .tt-page {
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    position: absolute;
+    left: 0;
+    top: 10px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .wrap-archi3 .tt-page {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3.2rem;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .wrap-archi3 .tt-page {
+    font-size: 2.4rem;
+  }
+}
+
+.wrap-archi3 .tt-page span {
+  display: block;
+}
+
 .floorplan {
-  width: 1200px;
+  width: 1000px;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 90px;
+  position: relative;
 }
 
 .inner,
@@ -211,28 +411,11 @@
   height: 100vh;
 }
 
-.picBox {
-  padding-right: 185px;
-}
-
-@media screen and (max-width: 1366px) {
-  .picBox {
-    padding-right: 160px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .picBox {
-    padding: 0;
-  }
-}
-
 .des {
   width: 535px;
   height: 350px;
   background: rgba(255, 255, 255, .84);
   position: relative;
-  margin-bottom: 50px;
 }
 
 .des .desBox {
@@ -255,48 +438,39 @@
 }
 
 .pic1 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi1.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi1.jpg) no-repeat center;
+  background: url(../img/archi1.jpg) no-repeat center;
 }
 
 .pic2 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi2.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi2.jpg) no-repeat center;
+  background: url(../img/archi2.jpg) no-repeat center;
 }
 
 .pic3 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi3.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi3.jpg) no-repeat center;
+  background: url(../img/archi3.jpg) no-repeat center;
 }
 
 .pic4 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi4.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi4.jpg) no-repeat center;
+  background: url(../img/archi4.jpg) no-repeat center;
 }
 
 .pic5 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi5.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi5.jpg) no-repeat center;
+  background: url(../img/archi5.jpg) no-repeat center;
 }
 
 .pic6 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi6.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi6.jpg) no-repeat center;
+  background: url(../img/archi6.jpg) no-repeat center;
 }
 
 .pic7 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi8.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi8.jpg) no-repeat center;
+  background: url(../img/archi8.jpg) no-repeat center;
 }
 
 .pic8 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi9.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi9.jpg) no-repeat center;
+  background: url(../img/archi9.jpg) no-repeat center;
 }
 
 .pic9 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), to(black)), url(../img/archi10.jpg) no-repeat center;
-  background: linear-gradient(to bottom, transparent 70%, black 100%), url(../img/archi10.jpg) no-repeat center;
+  background: url(../img/archi10.jpg) no-repeat center;
 }
 
 .pic9 .des {
@@ -317,6 +491,169 @@
 .parking-logo {
   width: 60%;
   margin: 25px 0 10px;
+}
+
+@media screen and (min-width: 961px) {
+  .mapSub {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .mapSub {
+    bottom: -20px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .mapSub {
+    margin-top: 30px;
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .mapSub {
+    width: 70%;
+    margin: 30px auto 100px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .mapSub ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
+
+.mapSub li {
+  font-size: 25.6px;
+  font-size: 1.6rem;
+  margin: 10px 0;
+}
+
+.mapSub li:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 100%;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 20px;
+  z-index: -1;
+}
+
+@media screen and (max-width: 1024px) {
+  .mapSub li {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .mapSub li {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .mapSub li {
+    font-size: 2rem;
+    width: 100%;
+  }
+}
+
+.mapSub .num {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background: #000;
+  color: #fff;
+  line-height: 25px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1366px) {
+  .mapSub .num {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    line-height: 20px;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .mapSub .num {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    line-height: 25px;
+    font-size: 1.8rem;
+  }
+}
+
+.mapSub .focus {
+  position: relative;
+  color: #fff;
+}
+
+.mapSub .focus:after {
+  width: 108%;
+  left: -4%;
+}
+
+.mapBox > a {
+  height: 30px;
+  width: 30px;
+}
+
+.map-1f-1 {
+  top: 133px;
+  right: 128px;
+}
+
+.map-1f-5 {
+  top: 95px;
+  right: 285px;
+}
+
+.map-1f-6 {
+  top: 379px;
+  right: 285px;
+}
+
+.map-b2f-4 {
+  right: 91px;
+  bottom: 189px;
+}
+
+.map-b2f-5 {
+  right: 288px;
+  bottom: 178px;
+}
+
+.map-r1f-3 {
+  left: 219px;
+  top: 137px;
+}
+
+.map-r1f-4 {
+  left: 439px;
+  top: 189px;
+}
+
+.map-r1f-7 {
+  right: 53px;
+  top: 143px;
 }
 
 /*# sourceMappingURL=archi.css.map */

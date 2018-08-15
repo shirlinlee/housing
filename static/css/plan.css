@@ -1,4 +1,4 @@
-.roomplan, .floor-tab a {
+.roomplan {
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
@@ -64,6 +64,14 @@
   transform: rotate(0);
 }
 
+.ps {
+  font-size: 22.4px;
+  font-size: 1.4rem;
+  color: #6f6f6f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .room115 {
   width: 750px;
 }
@@ -90,60 +98,6 @@
 
 .floor {
   width: 1100px;
-}
-
-.floor-tab {
-  left: 0;
-  bottom: 8%;
-  width: calc(100% - 185px);
-  position: fixed;
-}
-
-@media screen and (max-width: 1366px) {
-  .floor-tab {
-    width: calc(100% - 160px);
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .floor-tab {
-    width: 100%;
-  }
-}
-
-.floor-tab ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 100%;
-}
-
-.floor-tab a {
-  font-size: 32px;
-  font-size: 2rem;
-  color: #000;
-  margin: 0 10px;
-  letter-spacing: 1px;
-}
-
-.floor-tab a:hover {
-  -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
-}
-
-.floor-tab li:not(:last-child) {
-  border-right: 1px solid rgba(0, 0, 0, .1);
-}
-
-.floor-tab .active {
-  color: #6f6f6f;
 }
 
 /*# sourceMappingURL=plan.css.map */

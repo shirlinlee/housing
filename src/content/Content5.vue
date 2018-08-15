@@ -5,12 +5,13 @@
         <span class="page">about life</span>
         <main>
           <div class="mapBox">
-            <transition name="fade">
-              <div class="map por" v-for="(life, index, key) in lifes" :key="'index'+index" v-if="currentData(0,index)" @click="openLb(life.srcName, true, life.el)">
+              <viewer class="map por" :options="options" :key="'index'" v-if="currentData(0,0)">
+                <img src="/static/img/4-1-1.png">
+              </viewer>
+              <div class="map por" v-for="(life, index, key) in lifes" :key="'index'+index" :class="'map_'+index" v-if="currentData(0,index)" @click="openLb(life.srcName, true, life.el)">
                 <img :src="'/static/img/'+life.srcName"/>
                 <div v-html="life.extra" />
               </div>
-            </transition>
           </div>
           <div class="sq-tab">
             <ul>
@@ -111,6 +112,7 @@
 </template>
 
 <script>
+  import 'viewerjs/dist/viewer.css'
   import LB from './../components/LightBox'
 
   export default {
@@ -129,7 +131,9 @@
           { name:'書生學區', srcName:'4-1-2.png', el:'', extra:''},
           { name:'公園綠地', srcName:'4-1-3.png', el:'', extra:''},
           { name:'便利生活', srcName:'4-1-4.png', el:'', extra:''}
-        ],     
+        ],  
+        options: { "inline": false,  "navbar": false, "title": false, "toolbar": false, "tooltip": false, "movable": true, "zoomable": true, "rotatable": false, "scalable": true, "transition": false, "fullscreen": false, "keyboard": false, "url": "data-source" },
+   
       }
     },
     components: {
@@ -175,8 +179,6 @@
         this.styleTag.setAttribute("type", "text/css")
         this.styleTag.setAttribute("href", '/static/css/life.css')
         document.getElementsByTagName("head")[0].appendChild(this.styleTag)
-
-        
       })
     },
     destroyed() {
@@ -184,15 +186,42 @@
     },
   }
 </script>
-<style scoped>
+<style >
   .wrap .mapBox img{
       cursor: pointer;
       transition: all .3s ease;
   }
-  .wrap .mapBox img:hover{
+  .wrap.wrap-life .mapBox img:hover{
       opacity: .5;
       cursor: pointer;
     
+  }
+  .map_0{
+     display: none;
+  }
+  body .viewer-backdrop {
+     background-color: rgba(0, 0, 0, .8);
+  }
+  body .viewer-button{
+    width: 50px;
+    right: 30px;
+    top: 30px;
+    background-image: url(/static/images/close.png);
+    height: 50px;
+    background-position: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border-radius: 0;
+
+  }
+  body .viewer-button:focus, body .viewer-button:hover{
+    background-color: transparent;
+    border-radius: 0;
+    
+    
+  }
+  body .viewer-button:before{
+    display: none;
   }
    
 </style>

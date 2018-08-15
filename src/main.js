@@ -4,7 +4,9 @@ import Vue from 'vue'
 import Index from './Index'
 import Vuex from 'vuex'
 import stores from './stores.js'
+import Viewer from 'v-viewer'
 
+Vue.use(Viewer)
 Vue.use(Vuex)
 
 const store = new Vuex.Store(stores)
